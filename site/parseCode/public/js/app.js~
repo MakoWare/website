@@ -1,0 +1,16 @@
+'use strict';
+
+var baseApp = angular.module('mobiApp', [
+    'google-maps',
+    'ngRoute',
+    'mobiServices',
+    'mobiFilters',
+    'ui.bootstrap'
+]);
+
+mobiApp.config(['$routeProvider',
+                function($routeProvider) {
+                    $routeProvider.
+                        when('/', {
+                            templateUrl: 'partials/loginView.html',
+                            controller: LoginCtrl}).

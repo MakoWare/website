@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "MakoWare": {
+            "applicationId": "6aG3WzQanUs53s7sp6SqEBXOkqJ5fOu0JgtFSnsG", 
+            "masterKey": "zjyhhGc46TGEJoRb2tsATsO191dDZtqoI8NeVyVY"
+        }, 
+        "_default": {
+            "link": "MakoWare"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.2.18"
+    }
+}
