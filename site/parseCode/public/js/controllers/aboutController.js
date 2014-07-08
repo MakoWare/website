@@ -1,7 +1,6 @@
-//Home Controller
+//About Controller
 
-var HomeCtrl = BaseController.extend({
-
+var AboutCtrl = BaseController.extend({
     init: function($scope, $route){
         this._super($scope);
     },
@@ -9,6 +8,7 @@ var HomeCtrl = BaseController.extend({
     defineListeners: function(){
         this._super();
     }
+
 });
 
-HomeCtrl.$inject = ['$scope'];
+AboutCtrl.$inject = ['$scope'];

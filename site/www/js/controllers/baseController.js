@@ -8,7 +8,7 @@ var BaseController = Class.extend({
     },
 
     defineListeners:function(){
-//	this.$scope.$on('$destroy',this.destroy.bind(this));
+	this.$scope.$on('$destroy',this.destroy.bind(this));
     },
 
     defineScope:function(){

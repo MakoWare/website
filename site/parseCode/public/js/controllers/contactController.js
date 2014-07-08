@@ -1,6 +1,6 @@
-//Home Controller
+//Contact Controller
 
-var HomeCtrl = BaseController.extend({
+var ContactCtrl = BaseController.extend({
 
     init: function($scope, $route){
         this._super($scope);
@@ -11,4 +11,4 @@ var HomeCtrl = BaseController.extend({
     }
 });
 
-HomeCtrl.$inject = ['$scope'];
+ContactCtrl.$inject = ['$scope'];
