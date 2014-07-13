@@ -11,11 +11,10 @@ import com.badlogic.gdx.math.Vector3;
 public class HomeScreen extends  ScreenAdapter {
 
     Site game;
-    OrthographicCamera guiCam;
-    Rectangle soundBounds;
-    Rectangle playBounds;
-    Rectangle helpBounds;
-    Vector3 touchPoint;
+
+    World world;
+    WorldListener worldListener;
+    WorldRenderer renderer;
 
     public HomeScreen (Site game){
         this.game = game;
@@ -26,9 +25,21 @@ public class HomeScreen extends  ScreenAdapter {
         playBounds = new Rectangle(160 - 150, 200 + 18, 300, 36);
         helpBounds = new Rectangle(160 - 150, 200 - 18 - 36, 300, 36);
         touchPoint = new Vector3();
+
+        worldListener = new WorldListener() {
+                @Override
+                public void move () {
+
+                }
+            };
+
+        world = new World(worldListener);
+        renderer = new WorldRenderer(game.batcher, world);
+
+
     }
 
-    public void update () {
+    public void update (float deltaTime) {
 
     }
 
@@ -38,7 +49,6 @@ public class HomeScreen extends  ScreenAdapter {
         gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         guiCam.update();
         game.batcher.setProjectionMatrix(guiCam.combined);
-
 
 
         game.batcher.enableBlending();
