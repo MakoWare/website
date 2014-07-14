@@ -21,7 +21,6 @@ public class WorldRenderer {
     public void render () {
         cam.update();
         batch.setProjectionMatrix(cam.combined);
-        renderBackground();
         renderObjects();
     }
 
@@ -29,17 +28,12 @@ public class WorldRenderer {
         batch.enableBlending();
         batch.begin();
 
-        renderPlatforms();
+        renderBalls();
 
         batch.end();
     }
 
     private void renderBalls () {
-        int len = world.ball.size();
-        for (int i = 0; i < len; i++) {
-            Ball ball = world.balls.get(i);
 
-            batch.draw(keyFrame, platform.position.x - 1, platform.position.y - 0.25f, 2, 0.5f);
-        }
     }
 }

@@ -22,12 +22,12 @@ public class World {
     public static final int WORLD_STATE_GAME_OVER = 2;
     public static final Vector2 gravity = new Vector2(0, -12);
 
-    public final List<Block> blocks;
+    public final List<Ball> blocks;
 
     public final WorldListener listener;
 
     public World (WorldListener listener) {
-        this.blocks = new ArrayList<Block>();
+        this.blocks = new ArrayList<Ball>();
         this.listener = listener;
 
         generateLevel();
@@ -38,7 +38,13 @@ public class World {
     }
 
     public void update (float deltaTime, float accelX) {
-        updatePlatforms(deltaTime);
+        updateBalls(deltaTime);
 
     }
+
+    public void updateBalls(float deltaTime){
+
+
+    }
+
 }

@@ -1,6 +1,8 @@
 package com.makowaredev.website.Screens;
 
-import com.makowaredev.website.Site;
+import com.makowaredev.website.*;
+import com.makowaredev.website.World.WorldListener;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.GL20;
@@ -12,26 +14,24 @@ public class HomeScreen extends  ScreenAdapter {
 
     Site game;
 
-    World world;
-    WorldListener worldListener;
+	OrthographicCamera guiCam;
+	Vector3 touchPoint;
+	World world;
+	WorldListener worldListener;
     WorldRenderer renderer;
+    int lastScore;
+	String scoreString;
 
     public HomeScreen (Site game){
         this.game = game;
 
         guiCam = new OrthographicCamera(320, 480);
         guiCam.position.set(320 / 2, 480 / 2, 0);
-        soundBounds = new Rectangle(0, 0, 64, 64);
-        playBounds = new Rectangle(160 - 150, 200 + 18, 300, 36);
-        helpBounds = new Rectangle(160 - 150, 200 - 18 - 36, 300, 36);
         touchPoint = new Vector3();
 
         worldListener = new WorldListener() {
-                @Override
-                public void move () {
 
-                }
-            };
+        };
 
         world = new World(worldListener);
         renderer = new WorldRenderer(game.batcher, world);
@@ -58,7 +58,7 @@ public class HomeScreen extends  ScreenAdapter {
 
     @Override
     public void render (float delta) {
-        update();
+        update(delta);
         draw();
     }
 
