@@ -6,10 +6,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Site extends Game {
 
-    // used by all screens
+    //Sprite batcher shared by all Screens
     public SpriteBatch batcher;
 
-    @Override
     public void create () {
         //Settings.load();
         //Assets.load();
@@ -18,9 +17,11 @@ public class Site extends Game {
         setScreen(new HomeScreen(this));
     }
 
-    @Override
     public void render() {
         super.render();
     }
 
+    public void dispose() {
+        batcher.dispose();
+    }
 }
