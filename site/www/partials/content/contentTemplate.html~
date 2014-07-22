@@ -1,0 +1,13 @@
+<div class="contentTemplate">
+  <div class="jumbotron" style="padding-top: 20px; background-color: rgba(255, 255, 255, 0.65">
+    <div>
+      <h2>LibGDX HTML App integration</h2>
+      <p>Box2d sine wave pendulum using bouncing balls, my god it's hypnotizing.</p>
+    </div>
+
+    <div align="center" id="pendulum">
+      <iframe src="js/pendulum/index.html" width="500" height="342"/>
+    </div>
+
+  </div>
+</div>
