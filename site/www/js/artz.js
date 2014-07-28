@@ -13,9 +13,9 @@ var artz = function(){
             cellpadding: cellpadding,
             cellsize: cellsize
         }).generate($(window).width(), $(window).height());
-    document.body.setAttribute('style', 'background-image: ' + 'url(images/noise.png)' + ', ' + pattern.dataUrl);
+    document.body.setAttribute('style', 'background-image: ' + 'url(images/noise.png)' + ', ' + pattern.dataUrl + "; overflow: hidden");
+//    document.body.setAttribute('style', 'background-image: ' + 'url(images/noise.png)' + ', ' + pattern.dataUrl);
 };
-
 
 window.onload = artz;
 
