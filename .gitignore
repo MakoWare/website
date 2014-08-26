@@ -1,2 +1,4 @@
 site/parseCode
 app/local.properties
+
+.DS_Store
