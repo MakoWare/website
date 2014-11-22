@@ -1,4 +1,4 @@
-site/parseCode
+site/config
 app/local.properties
 
 .DS_Store
