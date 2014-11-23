@@ -1,26 +1,108 @@
 <polymer-element name="mako-background" attributes="counter">
-  <template>
-    <table>
-      <tbody>
+    <style>
+     table, th, td {
+         border: 5px solid black;
+     }
+    </style>
 
-      </tbody>
-    </table>
+  <template>
+      <div class="mako-background" style="position: absolute">
+          <table width="{{tableWidth}}" height="{{tableHeight}}">
+              <tbody>
+                  <tr template repeat="{{row in tableRows}}">
+                      <td template repeat="{{col in tableColumns}}" style="background-color: {{tableItemColors[row][col]}};" width="{{tableItemWidth}}" height="{{tableItemHeight}}" >
+
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
   </template>
   <script>
-    Polymer({
+    Polymer('mako-background', {
         tableHeight: 0,
         tableWidth: 0,
-        rows: 10,
-        cols: 10,
+        tableRows: [],
+        tableColumns: [],
+        tableItemWidth: 0,
+        tableItemHeight: 0,
+        colorFrequency: .3,
+        colorInterval: 0,
 
-
-
-        counterChanged: function() {
-            this.$.counterVal.classList.add('highlight');
+        ready: function() {
+            console.log("ready");
+            this.updateTableParams();
+            this.updateTableColors();
+            this.registerEvents();
         },
-        increment: function() {
-            this.counter++;
-        }
+
+        //Events
+        registerEvents: function(){
+            //Resize
+            this.onResize();
+        },
+
+        onResize: function(){
+            var self = this;
+            $( window ).resize(function() {
+                console.log("onResize");
+                self.updateTableParams();
+            });
+        },
+
+        updateTableParams: function(){
+            console.log("updating table Params");
+
+
+            this.tableWidth = $(document).width();
+            this.tableHeight = $(document).height();
+
+            this.tableRows = [0, 1, 2, 3, 4, 5, 6, 7];
+            this.tableColumns = [0, 1, 2, 3, 4, 5, 6, 7];
+
+            this.tableItemWidth = this.tableWidth / this.tableRows.length;
+            this.tableItemHeight = this.tableHeight / this.tableColumns.length;
+
+            this.tableItemColors = new Array(this.tableRows.length);
+            for (var i = 0; i < this.tableRows.length; i++) {
+                this.tableItemColors[i] = new Array(this.tableColumns.length);
+            }
+
+            console.log("Table Width: " + this.tableWidth);
+            console.log("Table Height: " + this.tableHeight);
+            console.log("# of Table Rows: " + this.tableRows);
+            console.log("# of Table Columns: " + this.tableColumns);
+            console.log("Table Item Width: " + this.tableItemWidth);
+            console.log("Table Item Height: " + this.tableItemHeight);
+
+
+        },
+
+        updateTableColors: function(){
+            var self = this;
+            setInterval(function(){
+                self.tableRows.forEach(function(i){
+                    self.tableColumns.forEach(function(j){
+                        var interval = i + j + self.colorInterval;
+                        var color = self.generateColor(self.colorFrequency, interval);
+                        self.tableItemColors[i][j] = color;
+                    });
+                });
+                self.colorInterval++;
+            }, 200);
+
+        },
+
+        generateColor: function(frequency, interval){
+            var nybHexString = "0123456789ABCDEF";
+            var red   = Math.sin(frequency * interval + 0) * 127 + 128;
+            var green = Math.sin(frequency * interval + 2) * 127 + 128;
+            var blue  = Math.sin(frequency * interval + 4) * 127 + 128;
+
+            return '#' +  String(nybHexString.substr((red >> 4) & 0x0F,1)) + nybHexString.substr(red & 0x0F,1) + String(nybHexString.substr((green >> 4) & 0x0F,1)) + nybHexString.substr(green & 0x0F,1) + String(nybHexString.substr((blue >> 4) & 0x0F,1)) + nybHexString.substr(blue & 0x0F,1);
+        },
+
+
     });
   </script>
 </polymer-element>
