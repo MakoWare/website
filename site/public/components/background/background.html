@@ -1,0 +1,26 @@
+<polymer-element name="mako-background" attributes="counter">
+  <template>
+    <table>
+      <tbody>
+
+      </tbody>
+    </table>
+  </template>
+  <script>
+    Polymer({
+        tableHeight: 0,
+        tableWidth: 0,
+        rows: 10,
+        cols: 10,
+
+
+
+        counterChanged: function() {
+            this.$.counterVal.classList.add('highlight');
+        },
+        increment: function() {
+            this.counter++;
+        }
+    });
+  </script>
+</polymer-element>

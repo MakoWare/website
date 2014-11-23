@@ -1,0 +1,25 @@
+{
+  "name": "MakoWare",
+  "version": "0.0.0",
+  "homepage": "makowaredev.com",
+  "authors": [
+    "yintothayang <yintothayang@gmail.com>"
+  ],
+  "description": "MakoWare's Website",
+  "keywords": [
+    "makoware",
+    "space-coke"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~0.5.1"
+  }
+}
