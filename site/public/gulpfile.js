@@ -42,19 +42,19 @@ gulp.task('copy', function () {
         'bower_components/polymer/polymer*',
         'bower_components/polymer/layout*'
     ])
-        .pipe(gulp.dest('dist'));
+        .pipe(gulp.dest('components/dist'));
 });
 
 gulp.task('build', ['js', 'html', 'css', "copy", 'vulcanize']);
 
 gulp.task('default', ['build', 'connect'], function () {
-    gulp.watch(['src/*.*js'], ['js']);
-    gulp.watch(['src/*.html'], ['html']);
-    gulp.watch(['src/*.scss'], ['css']);
+    gulp.watch(['components/mako-cube/src/*.*js'], ['js']);
+    gulp.watch(['components/mako-cube/src/*.html'], ['html']);
+    gulp.watch(['components/mako-cube/src/*.scss'], ['css']);
     gulp.watch(['bower_components'], ['copy']);
-    gulp.watch(['dist/x-gif.local.html', 'dist/x-gif.js', 'dist/x-gif.css'], ['vulcanize']);
+    gulp.watch(['components/dist/mako-cube.local.html', 'components/dist/mako-cube.js', 'components/dist/mako-cube.css'], ['vulcanize']);
 
-    gulp.watch(['index.html', 'dist/**.*', 'demos/**.*'], function (event) {
+    gulp.watch(['index.html', 'components/dist/**.*', 'demos/**.*'], function (event) {
         return gulp.src(event.path)
             .pipe($.connect.reload());
     });
