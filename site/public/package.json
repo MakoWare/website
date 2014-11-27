@@ -1,13 +1,21 @@
 {
-  "name": "MakoWare",
-  "version": "1.0.0",
-  "description": "MakoWare's website",
-  "main": "index.html",
+  "name": "x-gif",
+  "version": "0.0.0",
+  "description": "The GIF element the internet deserves",
+  "main": "dist/x-gif.html",
+  "readme": "README.md",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "yintothayang",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/geelen/x-gif.git"
+  },
+  "author": "Glen Maddern",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/geelen/x-gif/issues"
+  },
   "devDependencies": {
     "gulp": "~3.6.0",
     "gulp-sass": "~0.7.1",
@@ -22,6 +30,5 @@
     "gulp-uglify": "~0.3.1",
     "gulp-rename": "~1.2.0",
     "gulp-vulcanize": "~0.2.1"
-
   }
 }
