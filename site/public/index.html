@@ -1,25 +1,29 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <title>MakoWare</title>
+    <script src="app/bower_components/webcomponentsjs/webcomponents.min.js"></script>
+    <script src="libs/three.min.js"></script>
+    <script src="libs/three-js/Projector.js"></script>
+    <script src="libs/three-js/CanvasRenderer.js"></script>
+    <script src="libs/three-js/stats.min.js"></script>
 
-  <title>MakoWare</title>
+    <link rel="import" href="components/three-environment/three-environment.html">
 
-  <script>
-    if ('registerElement' in document
-      && 'createShadowRoot' in HTMLElement.prototype
-      && 'import' in document.createElement('link')
-      && 'content' in document.createElement('template')) {
-      // We're using a browser with native WC support!
-    } else {
-      document.write('<script src="https:\/\/cdnjs.cloudflare.com/ajax/libs/polymer/0.3.4/platform.js"><\/script>')
-    }
-  </script>
-  <link rel="import" href="dist/x-gif.html">
-</head>
-<body>
+  <style>
+   body {
+       font-family: Monospace;
+       background-color: #f0f0f0;
+       margin: 0px;
+       overflow: hidden;
+   }
 
-  <x-gif><x-gif>
-</body>
+  </style>
+
+  </head>
+  <body>
+
+      <three-environment></three-environment>
+
+  </body>
 </html>

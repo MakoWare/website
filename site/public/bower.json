@@ -1,17 +1,29 @@
 {
-  "name": "x-gif",
-  "version": "0.1.1",
+  "name": "MakoWare",
+  "version": "0.0.0",
+  "homepage": "makowaredev.com",
   "authors": [
-    "Glen Maddern <glenmaddern@gmail.com>"
+    "yintothayang <yintothayang@gmail.com>"
   ],
-  "main": "dist/x-gif.html",
-  "description": "The GIF element the internet deserves",
+  "description": "MakoWare's Website",
+  "main": "index.html",
+  "keywords": [
+    "makoware",
+    "android",
+    "contracting",
+    "polymer",
+    "spacecoke"
+  ],
   "license": "MIT",
   "ignore": [
     "**/.*",
     "node_modules",
     "bower_components",
+    "app/bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~0.5.1"
+  }
 }
