@@ -1,26 +1,16 @@
 Polymer('three-environment', {
     ready: function() {
+        this.renderFunctions = [];
         this.createRenderer();
         this.createCamera();
         this.createScene();
         this.createStats();
 
-        this.createCube();
-
+        //this.createCube();
 
         console.log("three-environment: ready()");
 
-        //this.animate();
-        //this.render();
-
-        var render = function () {
-	    requestAnimationFrame( this.render );
-
-
-
-	    this.renderer.render(this.scene, this.camera);
-	};
-        render();
+        this.render();
 
     },
 
@@ -31,8 +21,9 @@ Polymer('three-environment', {
 
     createRenderer: function(){
 //        var renderer = new THREE.CanvasRenderer();
+
         var renderer = new THREE.WebGLRenderer();
-        this.renderer = renderer;
+        window.renderer = renderer;
 	renderer.setSize( window.innerWidth, window.innerHeight );
 	renderer.setClearColor( 0xf0f0f0 );
         this.shadowRoot.appendChild(renderer.domElement);
@@ -59,27 +50,41 @@ Polymer('three-environment', {
         this.shadowRoot.appendChild(stats.domElement);
     },
 
-    addToScene: function(object){
-        this.scene.add(object);
+    addToScene: function(child){
+        this.scene.add(child.object);
     },
 
     render: function(){
-        this.renderer.render( this.scene, this.camera );
-    },
+        var camera = this.camera;
+        var scene = this.scene;
+        var stats = this.stats;
 
-    animate: function(){
-        console.log(this);
-        console.log(this.animate);
-	requestAnimationFrame( this.animate );
+        window.animate = function(){
+	    requestAnimationFrame( window.animate );
+            window.renderer.render( scene, camera );
 
-	this.render();
-	this.stats.update();
+            scene.children.forEach(function(child){
+                if(child.hasAnimation){
+                    child.animate();
+                }
+            });
+
+            stats.update();
+        };
+
+        window.animate();
+
     },
 
     createCube: function(){
-        var geometry = new THREE.Geometry( 200, 200, 200 );
+        var geometry = new THREE.BoxGeometry( 200, 200, 200 );
 	var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
 	var cube = new THREE.Mesh( geometry, material );
+        cube.hasAnimation = true;
+
+        cube.animate = function(){
+            this.rotation.x += 0.01;
+        };
 
 	this.addToScene(cube);
     }

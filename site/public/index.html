@@ -3,12 +3,17 @@
   <head>
     <title>MakoWare</title>
     <script src="app/bower_components/webcomponentsjs/webcomponents.min.js"></script>
-    <script src="libs/three.min.js"></script>
+    <script src="libs/three-js/three.min.js"></script>
     <script src="libs/three-js/Projector.js"></script>
     <script src="libs/three-js/CanvasRenderer.js"></script>
     <script src="libs/three-js/stats.min.js"></script>
 
     <link rel="import" href="components/three-environment/three-environment.html">
+    <link rel="import" href="components/three-object/three-object.html">
+    <link rel="import" href="components/three-mesh/three-mesh.html">
+    <link rel="import" href="components/three-geometry/three-geometry.html">
+    <link rel="import" href="components/three-material/three-material.html">
+    <link rel="import" href="components/three-cube/three-cube.html">
 
   <style>
    body {
@@ -16,14 +21,17 @@
        background-color: #f0f0f0;
        margin: 0px;
        overflow: hidden;
+       margin: 0;
    }
-
+   canvas { width: 100%; height: 100% }
   </style>
 
   </head>
   <body>
+      <three-environment>
+          <three-cube></three-cube>
 
-      <three-environment></three-environment>
 
+      </three-environment>
   </body>
 </html>
