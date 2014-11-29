@@ -6,18 +6,25 @@ Polymer('three-geometry', {
     ready: function() {
         console.log("three-geometry: ready()");
 
-        this.extentChanged();
+
         this.initGeometry();
         this.parentNode.addChild(this);
     },
 
     initGeometry: function(){
+        this.w = this.attributes["w"].value;
+        this.h = this.attributes["h"].value;
+        this.d = this.attributes["d"].value;
         this.object = new THREE.BoxGeometry(this.w, this.h, this.d);
     },
 
-    extentChanged: function() {
-        if (this.extent) {
-            this.w = this.h = this.d = this.extent;
+    addChild: function(child){
+        console.log("three-geometry: addChild()");
+
+        if(child.object){
+            if(child.localName == 'three-face'){
+                this.object.faces[child.object.index] = child.object;
+            }
         }
     }
 });

@@ -19,9 +19,8 @@ Polymer('three-mesh', {
         }
         if (this.geometry && this.material) {
             this.object = new THREE.Mesh(this.geometry, this.material);
-            console.log(this);
+
             this.parentNode.addChild(this);
-            //this.addToParent3();
         }
     },
     lightDomReady: function() {
@@ -44,13 +43,6 @@ Polymer('three-mesh', {
                 this.material = child.object;
             }
             this.validate();
-        }
-    },
-
-    setMaterial: function(child){
-        if(!child.object){
-            console.log("setting material");
-            this.material = child.object;
         }
     }
 });

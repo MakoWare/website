@@ -31,7 +31,7 @@ Polymer('three-environment', {
 
     createCamera: function(){
         var camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 1000 );
-	camera.position.y = 150;
+	camera.position.y = 50;
 	camera.position.z = 500;
         this.camera = camera;
     },
