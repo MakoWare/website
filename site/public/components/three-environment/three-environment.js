@@ -20,9 +20,9 @@ Polymer('three-environment', {
       },
 
     createRenderer: function(){
-//        var renderer = new THREE.CanvasRenderer();
+        var renderer = new THREE.CanvasRenderer();
 
-        var renderer = new THREE.WebGLRenderer();
+//        var renderer = new THREE.WebGLRenderer();
         window.renderer = renderer;
 	renderer.setSize( window.innerWidth, window.innerHeight );
 	renderer.setClearColor( 0xf0f0f0 );
@@ -50,7 +50,7 @@ Polymer('three-environment', {
         this.shadowRoot.appendChild(stats.domElement);
     },
 
-    addToScene: function(child){
+    addChild: function(child){
         this.scene.add(child.object);
     },
 

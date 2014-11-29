@@ -1,17 +1,15 @@
 Polymer('three-cube', {
     ready: function() {
-        this.initGeometry();
-        this.initMaterial();
-        this.initObject();
+        this.super();
+//        this.initGeometry();
+//        this.initMaterial();
+//        this.initObject();
 
-
-        console.log(this.object);
-        console.log(this.parentNode.addToScene);
-        this.parentNode.addToScene(this);
+//        this.parentNode.addChild(this);
         console.log("three-cube: ready()");
     },
 
-    initGeometry: function(){
+    addChildGeomentryinitGeometry: function(){
         this.geometry = new THREE.BoxGeometry( 200, 200, 200 );
     },
 

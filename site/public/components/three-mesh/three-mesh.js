@@ -1,25 +1,27 @@
 Polymer('three-mesh', {
     ready: function() {
-        //this.validate();
+        this.validate();
         this.observeDOM();
+        console.log("three-mesh: ready()");
     },
     observeDOM: function() {
         this.onMutation(this, function() {
+            console.log("Mesh mutated");
             this.validate();
             this.observeDOM();
         });
     },
     validate: function() {
-        if (!this.objectParent) {
-            if (!this.geometry) {
-                var g = this.querySelector('three-geometry');
-                this.geometry = g ? g.object : null;
-            }
-            if (this.geometry && this.material) {
-                //this.removeFromParent3();
-                this.object = new THREE.Mesh(this.geometry, this.material);
-                this.addToParent3();
-            }
+        console.log("three-mesh: validate()");
+        if (!this.geometry) {
+            var g = this.querySelector('three-geometry');
+            this.geometry = g ? g.object : null;
+        }
+        if (this.geometry && this.material) {
+            this.object = new THREE.Mesh(this.geometry, this.material);
+            console.log(this);
+            this.parentNode.addChild(this);
+            //this.addToParent3();
         }
     },
     lightDomReady: function() {
@@ -30,5 +32,25 @@ Polymer('three-mesh', {
         this.material = material;
         this.validate();
         event.stopPropagation();
+    },
+
+    addChild: function(child){
+        console.log("three-mesh: addChild()");
+
+        if(child.object){
+            if(child.localName == 'three-geometry'){
+                this.geometry = child.object;
+            } else if (child.localName == 'three-material'){
+                this.material = child.object;
+            }
+            this.validate();
+        }
+    },
+
+    setMaterial: function(child){
+        if(!child.object){
+            console.log("setting material");
+            this.material = child.object;
+        }
     }
 });
