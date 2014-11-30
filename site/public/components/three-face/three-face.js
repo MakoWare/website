@@ -5,8 +5,6 @@ Polymer('three-face', {
     index: 0,
 
     ready: function() {
-        console.log("three-face: ready()");
-
         this.initFace();
         this.parentNode.addChild(this);
     },
@@ -17,10 +15,11 @@ Polymer('three-face', {
         this.c = this.attributes["c"].value;
         this.index = this.attributes["index"].value;
         this.materialIndex = this.attributes["materialIndex"].value;
+        this.color = this.attributes["color"].value;
 
         var normal = new THREE.Vector3( 0, 1, 0 );
-        var color = new THREE.Color( 0x778800 );
-        var face = new THREE.Face3( this.a, this.b, this.c, normal, color, this.materialIndex);
+        var face = new THREE.Face3( this.a, this.b, this.c, normal, this.color, this.materialIndex);
+        face.color.setHex(this.color);
         face.index = this.index;
 
         this.object = face;

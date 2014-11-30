@@ -52,6 +52,7 @@ Polymer('three-environment', {
 
     addChild: function(child){
         this.scene.add(child.object);
+        console.log(child.object);
     },
 
     render: function(){

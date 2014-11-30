@@ -6,21 +6,20 @@ Polymer('three-geometry', {
     ready: function() {
         console.log("three-geometry: ready()");
 
-
         this.initGeometry();
-        this.parentNode.addChild(this);
     },
 
     initGeometry: function(){
-        this.w = this.attributes["w"].value;
-        this.h = this.attributes["h"].value;
-        this.d = this.attributes["d"].value;
-        this.object = new THREE.BoxGeometry(this.w, this.h, this.d);
+        if(this.type == "Box"){
+            this.object = new THREE.BoxGeometry(this.w, this.h, this.d);
+        } else if(this.type == "PlaneBuffer"){
+            this.object = new THREE.PlaneBufferGeometry( this.w, this.h);
+        }
+
+        this.fire('three-geometry-changed');
     },
 
     addChild: function(child){
-        console.log("three-geometry: addChild()");
-
         if(child.object){
             if(child.localName == 'three-face'){
                 this.object.faces[child.object.index] = child.object;

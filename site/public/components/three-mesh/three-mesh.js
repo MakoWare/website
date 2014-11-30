@@ -1,25 +1,42 @@
 Polymer('three-mesh', {
     ready: function() {
+        this.x = this.attributes["x"].value;
+        this.y = this.attributes["y"].value;
+        this.z = this.attributes["z"].value;
+        this.hasAnimation = this.attributes["animate"].value;
+
         this.validate();
-        this.observeDOM();
+        this.watchChildren();
+
         console.log("three-mesh: ready()");
     },
-    observeDOM: function() {
-        this.onMutation(this, function() {
-            console.log("Mesh mutated");
-            this.validate();
-            this.observeDOM();
+
+
+    watchChildren: function() {
+        var self = this;
+        this.addEventListener('three-geometry-changed', function(e){
+            if($.inArray(e.srcElement, self.children) > -1){
+                self.validate();
+            }
+        });
+
+        this.addEventListener('three-material-changed', function(e){
+            if($.inArray(e.srcElement, self.children) > -1){
+                self.validate();
+            }
         });
     },
     validate: function() {
-        console.log("three-mesh: validate()");
-        if (!this.geometry) {
-            var g = this.querySelector('three-geometry');
-            this.geometry = g ? g.object : null;
-        }
+        var g = this.querySelector('three-geometry');
+        this.geometry = g ? g.object : null;
+
+        var m = this.querySelector('three-material');
+        this.material = m ? m.object : null;
+
         if (this.geometry && this.material) {
             this.object = new THREE.Mesh(this.geometry, this.material);
-
+            this.initAnimation();
+            this.updatePosition();
             this.parentNode.addChild(this);
         }
     },
@@ -33,9 +50,23 @@ Polymer('three-mesh', {
         event.stopPropagation();
     },
 
-    addChild: function(child){
-        console.log("three-mesh: addChild()");
+    initAnimation: function(){
+        if(this.hasAnimation == "true"){
+            if(this.animation){
+                console.log(this.animation);
+                this.object.animate = this.animation;
+            } else {
+                this.object.hasAnimation = true;
+                this.object.animate = function(){
+                    this.rotation.y += 0.01;
+                    this.rotation.x += 0.01;
+                };
+            }
+        }
 
+    },
+
+    addChild: function(child){
         if(child.object){
             if(child.localName == 'three-geometry'){
                 this.geometry = child.object;
