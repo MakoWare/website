@@ -24,6 +24,9 @@ Polymer('three-material', {
             material = new THREE.MeshFaceMaterial(this.materials);
         } else {
             material = new THREE.MeshBasicMaterial( { color: 0xA0E5E4, overdraw: 0.5 } );
+            if(this.color){
+                material.color.setHex(this.color);
+            }
         }
         this.object = material;
         this.attributes["ready"] = true;

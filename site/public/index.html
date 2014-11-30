@@ -33,8 +33,8 @@
   </head>
   <body>
       <three-environment>
-          <three-mesh id="cube" x="0" y="0" z="0" animate="true">
-              <three-geometry w="300" h="300" d="300" type="Box"></three-geometry>
+          <three-mesh id="cube" x="0" y="100" z="0" animate="true">
+              <three-geometry w="200" h="200" d="200" type="Box"></three-geometry>
 
               <three-material type="MeshFaceMaterial">
                   <three-material type="MeshBasicMaterial"></three-material>
@@ -42,9 +42,17 @@
                   <three-material type="MeshBasicMaterial"></three-material>
                   <three-material type="MeshBasicMaterial"></three-material>
                   <three-material type="MeshBasicMaterial"></three-material>
-                  <three-material type="MeshBasicMaterial"></three-material>
+                  <three-material type="MeshBasicMaterial" color="0xFF5588"></three-material>
               </three-material>
           </three-mesh>
+
+
+          <three-plane id="plane" x="0" y="-100" z="-0" animate="true">
+              <three-geometry w="220" h="220" d="220" type="PlaneBuffer"></three-geometry>
+              <three-material type="MeshBasicMaterial" color="0xe0e0e0">
+              </three-material>
+          </three-plane>
+
 
 
       </three-environment>

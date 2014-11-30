@@ -59,7 +59,7 @@ Polymer('three-mesh', {
                 this.object.hasAnimation = true;
                 this.object.animate = function(){
                     this.rotation.y += 0.01;
-                    this.rotation.x += 0.01;
+                    //this.rotation.x += 0.01;
                 };
             }
         }
