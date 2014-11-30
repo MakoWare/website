@@ -5,7 +5,6 @@ Polymer('three-geometry', {
     extent: 0,
     ready: function() {
         console.log("three-geometry: ready()");
-
         this.initGeometry();
     },
 

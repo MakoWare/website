@@ -2,8 +2,23 @@
 <polymer-element name="three-cube" extends="three-mesh">
  <template>
 
-    <three-geometry></three-geometry>
-    <three-material></three-material>
+   <div id="geometryContainer">
+     <three-geometry id="geometry" w="200" h="200" d="200" type="Box"></three-geometry>
+   </div>
+
+   <div id="materialContainer">
+     <three-material id="material" type="MeshFaceMaterial">
+
+         <three-material type="MeshBasicMaterial"></three-material>
+         <three-material type="MeshBasicMaterial"></three-material>
+         <three-material type="MeshBasicMaterial"></three-material>
+         <three-material type="MeshBasicMaterial"></three-material>
+         <three-material type="MeshBasicMaterial"></three-material>
+         <three-material type="MeshBasicMaterial" color="0xFF5588"></three-material>
+
+     </three-material>
+   </div>
+
 
   </template>
   <script src="three-cube.js"></script>

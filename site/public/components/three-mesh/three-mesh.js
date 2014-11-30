@@ -15,23 +15,39 @@ Polymer('three-mesh', {
     watchChildren: function() {
         var self = this;
         this.addEventListener('three-geometry-changed', function(e){
+            console.log("geometry-changed");
             if($.inArray(e.srcElement, self.children) > -1){
                 self.validate();
             }
         });
 
         this.addEventListener('three-material-changed', function(e){
+            console.log("material-changed");
             if($.inArray(e.srcElement, self.children) > -1){
                 self.validate();
             }
         });
     },
     validate: function() {
+        //Regular DOM
         var g = this.querySelector('three-geometry');
         this.geometry = g ? g.object : null;
 
         var m = this.querySelector('three-material');
         this.material = m ? m.object : null;
+
+        //Shadow DOM
+        if(this.$ && this.$.geometryContainer){
+            var g = this.$.geometryContainer.querySelector('#geometry');
+            this.geometry = g ? g.object : null;
+        }
+
+        if(this.$ && this.$.geometryContainer){
+            var m = this.$.materialContainer.querySelector('#material');
+            this.material = m ? m.object : null;
+            console.log(this.material);
+        }
+
 
         if (this.geometry && this.material) {
             this.object = new THREE.Mesh(this.geometry, this.material);

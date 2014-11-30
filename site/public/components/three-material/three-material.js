@@ -2,14 +2,20 @@ Polymer('three-material', {
     type: "",
 
     ready: function() {
-        this.materials = [];
+        this.validate();
         this.watchChildren();
         this.initMaterial();
+    },
+
+    validate: function() {
+
     },
 
     watchChildren: function() {
         var self = this;
         this.addEventListener('three-material-changed', function(e){
+
+
             if($.inArray(e.srcElement, self.children) > -1){
                 self.addChild(e.srcElement);
             }
@@ -29,16 +35,21 @@ Polymer('three-material', {
             }
         }
         this.object = material;
-        this.attributes["ready"] = true;
-        //console.log("three-material: init");
-        //console.log(this.object);
-        this.fire('three-material-changed');
+
+        if(this.parentNode.localName == "three-material"){
+            this.parentNode.addChild(this);
+        }
     },
 
     addChild: function(child){
+        if(!this.materials){
+            this.materials = [];
+
+        }
         if(child.localName == "three-material"){
             this.materials.push(child.object);
             this.object = new THREE.MeshFaceMaterial(this.materials);
+            this.fire('three-material-changed');
         }
     }
 
