@@ -5,10 +5,10 @@ Polymer('three-geometry', {
     extent: 0,
     ready: function() {
         console.log("three-geometry: ready()");
-        this.initGeometry();
+        this.createGeometry();
     },
 
-    initGeometry: function(){
+    createGeometry: function(){
         if(this.type == "Box"){
             this.object = new THREE.BoxGeometry(this.w, this.h, this.d);
         } else if(this.type == "PlaneBuffer"){
@@ -16,7 +16,11 @@ Polymer('three-geometry', {
             this.object.applyMatrix( new THREE.Matrix4().makeRotationX( - Math.PI / 2 ) );
         }
 
-        this.fire('three-geometry-changed');
+        this.objectChanged();
+    },
+
+    objectChanged: function(){
+        this.fire('geometry-changed', this.object);
     },
 
     addChild: function(child){

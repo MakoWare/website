@@ -1,6 +1,11 @@
-<link rel="import" href="/app/bower_components/polymer/polymer.html">
 <polymer-element name="three-plane" extends="three-mesh">
   <template>
+    <div id="geometryContainer">
+      <three-geometry id="geometry" w="220" h="220" d="220" type="PlaneBuffer"></three-geometry>
+    </div>
+    <div id="materialContainer">
+      <three-material id="material" type="MeshBasicMaterial" color="0xe0e0e0"></three-material>
+    </div>
   </template>
   <script src="three-plane.js"></script>
 </polymer-element>

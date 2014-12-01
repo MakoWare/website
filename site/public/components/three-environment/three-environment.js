@@ -5,13 +5,24 @@ Polymer('three-environment', {
         this.createCamera();
         this.createScene();
         this.createStats();
-
-        //this.createCube();
+        this.resizeHandler();
 
         console.log("three-environment: ready()");
 
         this.render();
+    },
 
+    resizeHandler: function() {
+        var self = this;
+        function onWindowResize(){
+	    var windowHalfX = window.innerWidth / 2;
+	    var windowHalfY = window.innerHeight / 2;
+
+	    self.camera.aspect = window.innerWidth / window.innerHeight;
+	    self.camera.updateProjectionMatrix();
+	    this.renderer.setSize( window.innerWidth, window.innerHeight );
+        };
+        window.addEventListener( 'resize', onWindowResize, false );
     },
 
     getRenderer: function(event) {
@@ -52,7 +63,6 @@ Polymer('three-environment', {
 
     addChild: function(child){
         this.scene.add(child.object);
-        console.log(child.object);
     },
 
     render: function(){
@@ -72,22 +82,7 @@ Polymer('three-environment', {
 
             stats.update();
         };
-
         window.animate();
-
-    },
-
-    createCube: function(){
-        var geometry = new THREE.BoxGeometry( 200, 200, 200 );
-	var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
-	var cube = new THREE.Mesh( geometry, material );
-        cube.hasAnimation = true;
-
-        cube.animate = function(){
-            this.rotation.x += 0.01;
-        };
-
-	this.addToScene(cube);
     }
 
 });

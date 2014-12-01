@@ -1,30 +1,20 @@
 Polymer('three-material', {
-    type: "",
 
     ready: function() {
-        this.validate();
         this.watchChildren();
-        this.initMaterial();
-    },
-
-    validate: function() {
-
+        this.createMaterial();
     },
 
     watchChildren: function() {
         var self = this;
         this.addEventListener('three-material-changed', function(e){
-
-
             if($.inArray(e.srcElement, self.children) > -1){
                 self.addChild(e.srcElement);
             }
         });
     },
 
-
-    initMaterial: function(){
-        this.type = this.attributes["type"].value;
+    createMaterial: function(){
         var material;
         if(this.type == "MeshFaceMaterial"){
             material = new THREE.MeshFaceMaterial(this.materials);
@@ -39,19 +29,25 @@ Polymer('three-material', {
         if(this.parentNode.localName == "three-material"){
             this.parentNode.addChild(this);
         }
+
+        this.objectChanged();
+    },
+
+    objectChanged: function(){
+        this.fire('material-changed', this.object);
     },
 
     addChild: function(child){
         if(!this.materials){
             this.materials = [];
-
         }
         if(child.localName == "three-material"){
             this.materials.push(child.object);
             this.object = new THREE.MeshFaceMaterial(this.materials);
-            this.fire('three-material-changed');
+            this.objectChanged();
         }
-    }
+    },
+
 
 
 
