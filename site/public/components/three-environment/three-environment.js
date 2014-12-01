@@ -31,9 +31,9 @@ Polymer('three-environment', {
       },
 
     createRenderer: function(){
+        //var renderer = new THREE.WebGLRenderer();
         var renderer = new THREE.CanvasRenderer();
 
-//        var renderer = new THREE.WebGLRenderer();
         window.renderer = renderer;
 	renderer.setSize( window.innerWidth, window.innerHeight );
 	renderer.setClearColor( 0xf0f0f0 );
@@ -43,7 +43,7 @@ Polymer('three-environment', {
     createCamera: function(){
         var camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 1000 );
 	camera.position.y = 50;
-	camera.position.z = 500;
+	camera.position.z = 470;
         this.camera = camera;
     },
 

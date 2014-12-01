@@ -21,6 +21,8 @@ Polymer('three-cube', {
         this.object.previewAnimation = true;
 
         $(document).on("mousedown", this.onDocumentMouseDown.bind(this));
+        $(document).on("touchstart", this.onDocumentTouchStart.bind(this));
+        $(document).on("touchmove", this.onDocumentTouchMove.bind(this));
 
         this.initAnimation();
         console.log("three-cube: ready()");
@@ -65,21 +67,31 @@ Polymer('three-cube', {
     },
 
     onDocumentTouchStart: function(event) {
-	if ( event.touches.length === 1 ) {
+        this.object.previewAnimation = false;
+        console.log("on touch start");
+        console.log(event);
+	if ( event.originalEvent.touches.length === 1 ) {
 	    event.preventDefault();
 
-	    this.mouseXOnMouseDown = event.touches[ 0 ].pageX - this.windowHalfX;
+	    this.mouseXOnMouseDown = event.originalEvent.touches[ 0 ].pageX - this.windowHalfX;
+	    this.mouseYOnMouseDown = event.originalEvent.touches[ 0 ].pageY - this.windowHalfY;
+
 	    this.targetRotationOnMouseDown = this.object.targetRotation;
-	}
+	    this.targetRotationOnMouseDownX = this.object.targetRotationX;
+        }
     },
 
     onDocumentTouchMove: function(event) {
-	if ( event.touches.length === 1 ) {
+        console.log("on touch move");
+	if ( event.originalEvent.touches.length === 1 ) {
 	    event.preventDefault();
 
-	    this.mouseX = event.touches[ 0 ].pageX - this.windowHalfX;
-	    this.object.targetRotation = this.targetRotationOnMouseDown + ( this.mouseX - this.mouseXOnMouseDown ) * 0.05;
-	}
+	    this.mouseX = event.originalEvent.touches[ 0 ].pageX - this.windowHalfX;
+	    this.mouseY = event.originalEvent.touches[ 0 ].pageY - this.windowHalfY;
+
+	    this.object.targetRotation = this.targetRotationOnMouseDown + ( this.mouseX - this.mouseXOnMouseDown ) * 0.01;
+	    this.object.targetRotationX = this.targetRotationOnMouseDownX + ( this.mouseY - this.mouseYOnMouseDown ) * 0.01;
+        }
     },
 
     initAnimation: function(){
