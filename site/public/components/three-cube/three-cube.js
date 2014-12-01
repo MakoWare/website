@@ -3,12 +3,22 @@ Polymer('three-cube', {
         this.super();
 
         this.object.targetRotation = 0;
+        this.object.targetRotationX = 0;
+
 	this.targetRotationOnMouseDown = 0;
+	this.targetRotationOnMouseDownX = 0;
+
 	this.mouseX = 0;
 	this.mouseXOnMouseDown = 0;
 
+	this.mouseY = 0;
+	this.mouseYOnMouseDown = 0;
+
+
 	this.windowHalfX = window.innerWidth / 2;
 	this.windowHalfY = window.innerHeight / 2;
+
+        this.object.previewAnimation = true;
 
         $(document).on("mousedown", this.onDocumentMouseDown.bind(this));
 
@@ -18,19 +28,26 @@ Polymer('three-cube', {
 
     onDocumentMouseDown: function(event) {
 	event.preventDefault();
+        this.object.previewAnimation = false;
         console.log("on mouse down");
         $(document).on("mousemove", this.onDocumentMouseMove.bind(this));
         $(document).on("mouseup", this.onDocumentMouseUp.bind(this));
         $(document).on("mouseout", this.onDocumentMouseOut.bind(this));
 
 	this.mouseXOnMouseDown = event.clientX - this.windowHalfX;
+        this.mouseYOnMouseDown = event.clientY - this.windowHalfY;
+
 	this.targetRotationOnMouseDown = this.object.targetRotation;
+	this.targetRotationOnMouseDownX = this.object.targetRotationX;
     },
 
     onDocumentMouseMove: function(event) {
         console.log("on mouse move");
 	this.mouseX = event.clientX - this.windowHalfX;
+        this.mouseY = event.clientY - this.windowHalfY;
 	this.object.targetRotation = this.targetRotationOnMouseDown + ( this.mouseX - this.mouseXOnMouseDown ) * 0.02;
+	this.object.targetRotationX = this.targetRotationOnMouseDownX + ( this.mouseY - this.mouseYOnMouseDown ) * 0.02;
+
     },
 
     onDocumentMouseUp: function(event) {
@@ -68,8 +85,14 @@ Polymer('three-cube', {
     initAnimation: function(){
         this.object.hasAnimation = true;
         this.object.animate = function(){
-            //console.log(this.targetRotation);
-            this.rotation.y += ( this.targetRotation - this.rotation.y ) * 0.05;
+            if(this.previewAnimation){
+                this.rotation.y += 0.01;
+                this.rotation.x += 0.03;
+
+            } else {
+                this.rotation.y += ( this.targetRotation - this.rotation.y) * 0.05;
+                this.rotation.x += ( this.targetRotationX - this.rotation.x) * 0.05;
+            }
 
         };
     }

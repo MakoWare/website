@@ -10,6 +10,8 @@ Polymer('three-plane', {
 	this.windowHalfX = window.innerWidth / 2;
 	this.windowHalfY = window.innerHeight / 2;
 
+        this.object.previewAnimation = true;
+
         $(document).on("mousedown", this.onDocumentMouseDown.bind(this));
 
         this.initAnimation();
@@ -19,6 +21,7 @@ Polymer('three-plane', {
 
     onDocumentMouseDown: function(event) {
 	event.preventDefault();
+        this.object.previewAnimation = false;
         console.log("on mouse down");
         $(document).on("mousemove", this.onDocumentMouseMove.bind(this));
         $(document).on("mouseup", this.onDocumentMouseUp.bind(this));
@@ -69,10 +72,12 @@ Polymer('three-plane', {
     initAnimation: function(){
         this.object.hasAnimation = true;
         this.object.animate = function(){
-            //console.log(this.targetRotation);
-            this.rotation.y += ( this.targetRotation - this.rotation.y ) * 0.05;
+            if(this.previewAnimation){
+                this.rotation.y += 0.01;
 
-            //this.rotation.y += 0.01;
+            } else {
+                this.rotation.y += ( this.targetRotation - this.rotation.y ) * 0.05;
+            }
         };
     }
 
