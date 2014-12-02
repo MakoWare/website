@@ -60,7 +60,6 @@ Polymer('three-cube', {
 	var intersects = raycaster.intersectObjects( objects );
 
 	if ( intersects.length > 0 ) {
-            console.log(intersects);
             this.centerFace(intersects[0].faceIndex);
 	}
 
@@ -68,7 +67,6 @@ Polymer('three-cube', {
 
     centerFace: function(faceIndex){
         console.log("center Face");
-        console.log(faceIndex);
         switch(faceIndex) {
         case 0:
             this.object.targetRotation = - Math.PI / 2;
@@ -120,13 +118,91 @@ Polymer('three-cube', {
             break;
         }
 
-        this.fullScreeFace();
+        this.fullScreeFace(faceIndex);
     },
 
-    fullScreeFace: function(){
+    fullScreeFace: function(faceIndex){
         var environment = $('#three-environment')[0];
         var camera = environment.camera;
-        console.log(this.object);
+
+        var currentX = this.object.geometry.parameters.width;
+        var currentY = this.object.geometry.parameters.height;
+
+        var windowX = window.innerWidth;
+        var windowY = window.innerHeight;
+
+        var scaleX = windowX / currentX;
+        var scaleY = windowY / currentY;
+        var windowScale = windowX / windowY;
+
+        console.log("currenX: " + currentX);
+        console.log("currentY: " + currentY);
+
+        console.log("windowX: " + windowX);
+        console.log("windowY: " + windowY);
+
+        console.log("scaleX: " + scaleX);
+        console.log("scaleY: " + scaleY);
+
+        console.log("windowScale: " + windowScale);
+
+
+        //Needs Real Math
+        var cameraVariance = (windowX - windowY) / 7500;
+        console.log(cameraVariance);
+        windowScale += cameraVariance;
+
+        switch(faceIndex) {
+        case 0:
+            this.object.scale.z = windowScale;
+            break;
+        case 1:
+            this.object.scale.z = windowScale;
+            break;
+        case 2:
+            this.object.scale.z = windowScale;
+            break;
+        case 3:
+            this.object.scale.z = windowScale;
+            break;
+        case 4:
+            this.object.scale.x = windowScale;
+            break;
+        case 5:
+            this.object.scale.x = windowScale;
+            break;
+        case 6:
+            this.object.scale.x = windowScale;
+            break;
+        case 7:
+            this.object.scale.x = windowScale;
+            break;
+        case 8:
+            this.object.scale.x = windowScale;
+            break;
+        case 9:
+            this.object.scale.x = windowScale;
+            break;
+        case 10:
+            this.object.scale.x = windowScale;
+            break;
+        case 11:
+            this.object.scale.x = windowScale;
+            break;
+        }
+
+
+
+        //Need to stop interval after this
+        var windowZoom = setInterval(function(){
+            console.log('runnin');
+            if(camera.position.z > 250){
+                camera.position.z -= 5;
+            } else {
+                clearInterval(windowZoom);
+            }
+        }, 10);
+
 
 
     },
@@ -179,7 +255,9 @@ Polymer('three-cube', {
     onDocumentTouchStart: function(event) {
         this.object.previewAnimation = false;
         console.log("on touch start");
-        console.log(event);
+
+        $(document).on("touchstop", this.onDocumentTouchStop.bind(this));
+
 	if ( event.originalEvent.touches.length === 1 ) {
 	    event.preventDefault();
 
@@ -191,8 +269,18 @@ Polymer('three-cube', {
         }
     },
 
+    onDocumentTouchStop: function(event){
+        console.log("on mouse up");
+        console.log("moved: " + this.moved);
+
+        if(!this.moved){
+            this.selectFace(event);
+        }
+    },
+
     onDocumentTouchMove: function(event) {
         console.log("on touch move");
+        this.moved = true;
 	if ( event.originalEvent.touches.length === 1 ) {
 	    event.preventDefault();
 
