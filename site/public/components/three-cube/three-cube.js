@@ -18,19 +18,123 @@ Polymer('three-cube', {
 	this.windowHalfX = window.innerWidth / 2;
 	this.windowHalfY = window.innerHeight / 2;
 
+        this.moved = false;
+
+
+
+
         this.object.previewAnimation = true;
 
         $(document).on("mousedown", this.onDocumentMouseDown.bind(this));
         $(document).on("touchstart", this.onDocumentTouchStart.bind(this));
         $(document).on("touchmove", this.onDocumentTouchMove.bind(this));
 
+
         this.initAnimation();
+        /*
+         */
+
+        //$(document).on("mousedown", this.createMeshListener.bind(this));
+
+
         console.log("three-cube: ready()");
+    },
+
+    selectFace: function(event){
+        console.log("select Face");
+        var environment = $('#three-environment')[0];
+        var camera = environment.camera;
+        var raycaster = environment.raycaster;
+
+
+	event.preventDefault();
+
+	var vector = new THREE.Vector3();
+	vector.set( ( event.clientX / window.innerWidth ) * 2 - 1, - ( event.clientY / window.innerHeight ) * 2 + 1, 0.5 );
+	vector.unproject( camera );
+
+	raycaster.ray.set( camera.position, vector.sub( camera.position ).normalize() );
+
+        var objects = [];
+        objects.push(this.object);
+	var intersects = raycaster.intersectObjects( objects );
+
+	if ( intersects.length > 0 ) {
+            console.log(intersects);
+            this.centerFace(intersects[0].faceIndex);
+	}
+
+    },
+
+    centerFace: function(faceIndex){
+        console.log("center Face");
+        console.log(faceIndex);
+        switch(faceIndex) {
+        case 0:
+            this.object.targetRotation = - Math.PI / 2;
+            this.object.targetRotationX = 0;
+            break;
+        case 1:
+            this.object.targetRotation = - Math.PI / 2;
+            this.object.targetRotationX = 0;
+            break;
+        case 2:
+            this.object.targetRotation = Math.PI / 2;
+            this.object.targetRotationX = 0;
+            break;
+        case 3:
+            this.object.targetRotation = Math.PI / 2;
+            this.object.targetRotationX = 0;
+            break;
+        case 4:
+            this.object.targetRotation = 0;
+            this.object.targetRotationX = Math.PI / 2;
+            break;
+        case 5:
+            this.object.targetRotation = 0;
+            this.object.targetRotationX = Math.PI / 2;
+            break;
+        case 6:
+            this.object.targetRotation = 0;
+            this.object.targetRotationX =  -Math.PI / 2;
+            break;
+        case 7:
+            this.object.targetRotation = 0;
+            this.object.targetRotationX = -Math.PI / 2;
+            break;
+        case 8:
+            this.object.targetRotation = 0;
+            this.object.targetRotationX = 0;
+            break;
+        case 9:
+            this.object.targetRotation = 0;
+            this.object.targetRotationX = 0;
+            break;
+        case 10:
+            this.object.targetRotation = Math.PI;
+            this.object.targetRotationX = 0;
+            break;
+        case 11:
+            this.object.targetRotation = Math.PI;
+            this.object.targetRotationX = 0;
+            break;
+        }
+
+        this.fullScreeFace();
+    },
+
+    fullScreeFace: function(){
+        var environment = $('#three-environment')[0];
+        var camera = environment.camera;
+        console.log(this.object);
+
+
     },
 
     onDocumentMouseDown: function(event) {
 	event.preventDefault();
         this.object.previewAnimation = false;
+        this.moved = false;
         console.log("on mouse down");
         $(document).on("mousemove", this.onDocumentMouseMove.bind(this));
         $(document).on("mouseup", this.onDocumentMouseUp.bind(this));
@@ -45,6 +149,7 @@ Polymer('three-cube', {
 
     onDocumentMouseMove: function(event) {
         console.log("on mouse move");
+        this.moved = true;
 	this.mouseX = event.clientX - this.windowHalfX;
         this.mouseY = event.clientY - this.windowHalfY;
 	this.object.targetRotation = this.targetRotationOnMouseDown + ( this.mouseX - this.mouseXOnMouseDown ) * 0.02;
@@ -54,9 +159,14 @@ Polymer('three-cube', {
 
     onDocumentMouseUp: function(event) {
         console.log("on mouse up");
+        console.log("moved: " + this.moved);
         $(document).unbind("mousemove");
         $(document).unbind("mouseup");
         $(document).unbind("mouseout");
+
+        if(!this.moved){
+            this.selectFace(event);
+        }
     },
 
     onDocumentMouseOut: function(event) {
@@ -105,7 +215,6 @@ Polymer('three-cube', {
                 this.rotation.y += ( this.targetRotation - this.rotation.y) * 0.05;
                 this.rotation.x += ( this.targetRotationX - this.rotation.x) * 0.05;
             }
-
         };
     }
 

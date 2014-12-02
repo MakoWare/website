@@ -3,6 +3,7 @@ Polymer('three-environment', {
         this.renderFunctions = [];
         this.createRenderer();
         this.createCamera();
+        this.createRaycaster();
         this.createScene();
         this.createStats();
         this.resizeHandler();
@@ -45,6 +46,10 @@ Polymer('three-environment', {
 	camera.position.y = 50;
 	camera.position.z = 470;
         this.camera = camera;
+    },
+
+    createRaycaster: function(){
+        this.raycaster = new THREE.Raycaster();
     },
 
     createScene: function(){

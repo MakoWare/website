@@ -10,11 +10,13 @@ Polymer('three-plane', {
 	this.windowHalfX = window.innerWidth / 2;
 	this.windowHalfY = window.innerHeight / 2;
 
+
         this.object.previewAnimation = true;
 
         $(document).on("mousedown", this.onDocumentMouseDown.bind(this));
 
         this.initAnimation();
+
 
         console.log("three-plane: ready()");
     },
