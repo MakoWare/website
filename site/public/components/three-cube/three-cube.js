@@ -19,10 +19,6 @@ Polymer('three-cube', {
 	this.windowHalfY = window.innerHeight / 2;
 
         this.moved = false;
-
-
-
-
         this.object.previewAnimation = true;
 
         $(document).on("mousedown", this.onDocumentMouseDown.bind(this));
@@ -31,28 +27,27 @@ Polymer('three-cube', {
 
 
         this.initAnimation();
-        /*
-         */
-
-        //$(document).on("mousedown", this.createMeshListener.bind(this));
-
-
         console.log("three-cube: ready()");
     },
 
     selectFace: function(event){
+	event.preventDefault();
         console.log("select Face");
+        console.log(event);
+
         var environment = $('#three-environment')[0];
         var camera = environment.camera;
         var raycaster = environment.raycaster;
-
-
-	event.preventDefault();
-
 	var vector = new THREE.Vector3();
-	vector.set( ( event.clientX / window.innerWidth ) * 2 - 1, - ( event.clientY / window.innerHeight ) * 2 + 1, 0.5 );
-	vector.unproject( camera );
 
+        if(event.type == "touchend"){
+            vector.set( ( event.originalEvent.changedTouches[0].clientX / window.innerWidth ) * 2 - 1, - ( event.originalEvent.changedTouches[0].clientY / window.innerHeight ) * 2 + 1, 0.5 );
+        } else {
+	    vector.set( ( event.clientX / window.innerWidth ) * 2 - 1, - ( event.clientY / window.innerHeight ) * 2 + 1, 0.5 );
+
+        }
+
+	vector.unproject( camera );
 	raycaster.ray.set( camera.position, vector.sub( camera.position ).normalize() );
 
         var objects = [];
@@ -191,8 +186,6 @@ Polymer('three-cube', {
             break;
         }
 
-
-
         //Need to stop interval after this
         var windowZoom = setInterval(function(){
             console.log('runnin');
@@ -203,8 +196,7 @@ Polymer('three-cube', {
             }
         }, 10);
 
-
-
+        this.fullScreen = true;
     },
 
     onDocumentMouseDown: function(event) {
@@ -254,10 +246,10 @@ Polymer('three-cube', {
 
     onDocumentTouchStart: function(event) {
         this.object.previewAnimation = false;
+        this.moved = false;
+        $(document).on("touchend", this.onDocumentTouchEnd.bind(this));
+
         console.log("on touch start");
-
-        $(document).on("touchstop", this.onDocumentTouchStop.bind(this));
-
 	if ( event.originalEvent.touches.length === 1 ) {
 	    event.preventDefault();
 
@@ -269,9 +261,8 @@ Polymer('three-cube', {
         }
     },
 
-    onDocumentTouchStop: function(event){
-        console.log("on mouse up");
-        console.log("moved: " + this.moved);
+    onDocumentTouchEnd: function(event){
+        console.log("Touch End");
 
         if(!this.moved){
             this.selectFace(event);
