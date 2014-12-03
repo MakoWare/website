@@ -18,6 +18,12 @@ Polymer('three-material', {
         var material;
         if(this.type == "MeshFaceMaterial"){
             material = new THREE.MeshFaceMaterial(this.materials);
+        } else if(this.type == "MeshLambertMaterial") {
+            var texture = THREE.ImageUtils.loadTexture( this.img );
+            material = new THREE.MeshLambertMaterial({
+                map: texture,
+                overdraw: true
+            });
         } else {
             material = new THREE.MeshBasicMaterial( { color: 0xA0E5E4, overdraw: 0.5 } );
             if(this.color){

@@ -10,6 +10,8 @@
     <script src="libs/three-js/stats.min.js"></script>
     <script src="components/three-cube/animations/cubeAnimation1.js"></script>
 
+
+    <link rel="import" href="app/bower_components/app-router/app-router.html">
     <link rel="import" href="components/three-environment/three-environment.html">
     <link rel="import" href="components/three-object/three-object.html">
     <link rel="import" href="components/three-mesh/three-mesh.html">
@@ -32,26 +34,16 @@
 
   </head>
   <body>
-      <three-environment id="three-environment">
-  <!--
-          <three-mesh id="cube" x="0" y="100" z="0" animate="true">
-              <three-geometry w="200" h="200" d="200" type="Box"></three-geometry>
 
-              <three-material type="MeshFaceMaterial">
-                  <three-material type="MeshBasicMaterial"></three-material>
-                  <three-material type="MeshBasicMaterial"></three-material>
-                  <three-material type="MeshBasicMaterial" color="0x465311"></three-material>
-                  <three-material type="MeshBasicMaterial" color="0xAA77BB"></three-material>
-                  <three-material type="MeshBasicMaterial" color="0x55EE00"></three-material>
-                  <three-material type="MeshBasicMaterial" color="0xFF5588"></three-material>
-              </three-material>
-          </three-mesh>
+    <app-router>
 
- -->
-          <three-plane id="plane" x="0" y="-183" z="0" animate="true"></three-plane>
+      <app-route path="/" import="/components/pages/main-page/main-page.html"></app-route>
 
-          <three-cube id="cube" x="0" y="0" z="0" animate="true"></three-cube>
+      <app-route path="/juke" import="/components/pages/juke-page/juke-page.html"></app-route>
 
-      </three-environment>
+      <app-route path="*" import="/pages/not-found-page.html"></app-route>
+
+    </app-router>
+
   </body>
 </html>

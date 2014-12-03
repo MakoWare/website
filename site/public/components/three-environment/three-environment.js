@@ -7,7 +7,9 @@ Polymer('three-environment', {
         this.createScene();
         this.createStats();
         this.resizeHandler();
+        this.getChildren();
 
+        this.isReady = true;
         console.log("three-environment: ready()");
 
         this.render();
@@ -34,6 +36,7 @@ Polymer('three-environment', {
     createRenderer: function(){
         //var renderer = new THREE.WebGLRenderer();
         var renderer = new THREE.CanvasRenderer();
+
 
         window.renderer = renderer;
 	renderer.setSize( window.innerWidth, window.innerHeight );
@@ -68,6 +71,17 @@ Polymer('three-environment', {
 
     addChild: function(child){
         this.scene.add(child.object);
+    },
+
+    getChildren: function(){
+        var children = this.children;
+        for(var i = 0; i < children.length; i++){
+            var child = children[i];
+            if(child.isReady){
+                this.addChild(child);
+            }
+        }
+
     },
 
     render: function(){

@@ -36,6 +36,10 @@ Polymer('three-cube', {
         console.log(event);
 
         var environment = $('#three-environment')[0];
+        if(!environment){
+            environment = this.parentNode;
+        }
+
         var camera = environment.camera;
         var raycaster = environment.raycaster;
 	var vector = new THREE.Vector3();
@@ -117,7 +121,12 @@ Polymer('three-cube', {
     },
 
     fullScreeFace: function(faceIndex){
+        var self = this;
+        this.fullScreen = true;
         var environment = $('#three-environment')[0];
+        if(!environment){
+            environment = this.parentNode;
+        }
         var camera = environment.camera;
 
         var currentX = this.object.geometry.parameters.width;
@@ -196,8 +205,21 @@ Polymer('three-cube', {
             }
         }, 10);
 
-        this.fullScreen = true;
+
+        setTimeout(function(){
+            self.transitionPage("/juke");
+        }, 2500);
+
+
     },
+
+    transitionPage: function(pageURL){
+        console.log(pageURL);
+        document.querySelector('app-router').go(pageURL);
+
+
+    },
+
 
     onDocumentMouseDown: function(event) {
 	event.preventDefault();

@@ -6,6 +6,7 @@ Polymer('three-mesh', {
         this.hasAnimation = this.attributes["animate"].value;
 
         this.validate();
+        this.isReady = true;
         console.log("three-mesh: ready()");
     },
 
@@ -39,7 +40,9 @@ Polymer('three-mesh', {
             this.object = new THREE.Mesh(this.geometry, this.material);
 
             this.updatePosition();
-            this.parentNode.addChild(this);
+            if(this.parentNode.isReady){
+                this.parentNode.addChild(this);
+            }
         }
     },
 
