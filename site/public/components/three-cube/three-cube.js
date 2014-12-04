@@ -19,7 +19,8 @@ Polymer('three-cube', {
 	this.windowHalfY = window.innerHeight / 2;
 
         this.moved = false;
-        this.object.previewAnimation = true;
+        //this.object.previewAnimation = true;
+        this.object.currentAnimation = "preview";
 
         $(document).on("mousedown", this.onDocumentMouseDown.bind(this));
         $(document).on("touchstart", this.onDocumentTouchStart.bind(this));
@@ -65,15 +66,19 @@ Polymer('three-cube', {
     },
 
     centerFace: function(faceIndex){
+        this.object.currentAnimation = "zoom";
+
         console.log("center Face");
         switch(faceIndex) {
         case 0:
             this.object.targetRotation = - Math.PI / 2;
             this.object.targetRotationX = 0;
+            this.object.targetRotationNegative = true;
             break;
         case 1:
             this.object.targetRotation = - Math.PI / 2;
             this.object.targetRotationX = 0;
+            this.object.targetRotationNegative = true;
             break;
         case 2:
             this.object.targetRotation = Math.PI / 2;
@@ -94,10 +99,12 @@ Polymer('three-cube', {
         case 6:
             this.object.targetRotation = 0;
             this.object.targetRotationX =  -Math.PI / 2;
+            this.object.targetRotationNegative = true;
             break;
         case 7:
             this.object.targetRotation = 0;
             this.object.targetRotationX = -Math.PI / 2;
+            this.object.targetRotationNegative = true;
             break;
         case 8:
             this.object.targetRotation = 0;
@@ -121,6 +128,7 @@ Polymer('three-cube', {
     },
 
     fullScreeFace: function(faceIndex){
+        this.object.currentAnimation = "transition";
         var self = this;
         this.fullScreen = true;
         var environment = $('#three-environment')[0];
@@ -155,46 +163,59 @@ Polymer('three-cube', {
         console.log(cameraVariance);
         windowScale += cameraVariance;
 
+        this.object.pageURL = "";
+
         switch(faceIndex) {
         case 0:
             this.object.scale.z = windowScale;
+            this.object.pageURL = "/juke";
             break;
         case 1:
             this.object.scale.z = windowScale;
+            this.object.pageURL = "/juke";
             break;
         case 2:
             this.object.scale.z = windowScale;
+            this.object.pageURL = "/juke";
             break;
         case 3:
             this.object.scale.z = windowScale;
+            this.object.pageURL = "/juke";
             break;
         case 4:
             this.object.scale.x = windowScale;
+            this.object.pageURL = "/juke";
             break;
         case 5:
             this.object.scale.x = windowScale;
+            this.object.pageURL = "/juke";
             break;
         case 6:
             this.object.scale.x = windowScale;
+            this.object.pageURL = "/juke";
             break;
         case 7:
             this.object.scale.x = windowScale;
+            this.object.pageURL = "/juke";
             break;
         case 8:
             this.object.scale.x = windowScale;
+            this.object.pageURL = "/juke";
             break;
         case 9:
             this.object.scale.x = windowScale;
+            this.object.pageURL = "/juke";
             break;
         case 10:
             this.object.scale.x = windowScale;
+            this.object.pageURL = "/juke";
             break;
         case 11:
             this.object.scale.x = windowScale;
+            this.object.pageURL = "/juke";
             break;
         }
 
-        //Need to stop interval after this
         var windowZoom = setInterval(function(){
             console.log('runnin');
             if(camera.position.z > 240){
@@ -203,26 +224,42 @@ Polymer('three-cube', {
                 clearInterval(windowZoom);
             }
         }, 10);
+    },
 
-
-        setTimeout(function(){
-            self.transitionPage("/juke");
-        }, 2500);
-
+    transitionPage: function(){
+        this.currentAnimation = "none";
+        console.log(this.pageURL);
+        document.querySelector('app-router').go(this.pageURL);
 
     },
 
-    transitionPage: function(pageURL){
-        console.log(pageURL);
-        document.querySelector('app-router').go(pageURL);
+    backToCube: function(){
+        var self = this;
+        this.fullScreen = true;
 
+        var environment = $('#three-environment')[0];
+        if(!environment){
+            environment = this.parentNode;
+        }
+        var camera = environment.camera;
 
+        this.object.scale.x = 1;
+        this.object.scale.y = 1;
+        this.object.scale.z = 1;
+
+        var windowZoom = setInterval(function(){
+            console.log('runnin');
+            if(camera.position.z > 240){
+                camera.position.z -= 5;
+            } else {
+                clearInterval(windowZoom);
+            }
+        }, 10);
     },
-
 
     onDocumentMouseDown: function(event) {
 	event.preventDefault();
-        this.object.previewAnimation = false;
+        this.object.currentAnimation = "controlled";
         this.moved = false;
         console.log("on mouse down");
         $(document).on("mousemove", this.onDocumentMouseMove.bind(this));
@@ -306,16 +343,53 @@ Polymer('three-cube', {
 
     initAnimation: function(){
         this.object.hasAnimation = true;
+        this.object.animations = [];
+        this.object.animations.push(this.previewAnimation.bind(this.object));
+        this.object.animations.push(this.controlledAnimation.bind(this.object));
+        this.object.animations.push(this.transitionPage.bind(this.object));
         this.object.animate = function(){
-            if(this.previewAnimation){
-                this.rotation.y += 0.01;
-                this.rotation.x += 0.03;
+            switch(this.currentAnimation){
+            case "none":
 
-            } else {
-                this.rotation.y += ( this.targetRotation - this.rotation.y) * 0.05;
-                this.rotation.x += ( this.targetRotationX - this.rotation.x) * 0.05;
+                break;
+            case "preview":
+
+                this.animations[0]();
+                break;
+            case "controlled":
+
+                this.animations[1]();
+                break;
+            case "zoom":
+
+
+                break;
+            case "transition":
+
+                if(!this.targetRotationNegative){
+                    if(this.targetRotation >=  (this.rotation.y - .01) && this.targetRotationX >= (this.rotation.x - .01)){
+                        this.animations[2]();
+                    }
+                } else {
+                    if(this.targetRotation >= (this.rotation.y  - .01) && this.targetRotationX >= (this.rotation.x - .01)){
+                        this.animations[2]();
+                    }
+                }
+                this.animations[1]();
+                break;
             }
         };
+    },
+
+
+    previewAnimation: function(){
+        this.rotation.y += 0.008;
+        this.rotation.x += 0.01;
+    },
+
+    controlledAnimation: function(){
+        this.rotation.y += ( this.targetRotation - this.rotation.y) * 0.05;
+        this.rotation.x += ( this.targetRotationX - this.rotation.x) * 0.05;
     }
 
 });
