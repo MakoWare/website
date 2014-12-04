@@ -4,11 +4,6 @@ Polymer('mako-page', {
         console.log("page ready()");
     },
 
-    changeBackground: function(){
-        $('body' ).css('background-image', " -webkit-linear-gradient(-45deg, #0674ef, #00d3f4)");
-
-    },
-
     fadeIn: function(){
         var pageContent = this.$.pageContent;
 
