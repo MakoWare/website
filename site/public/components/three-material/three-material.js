@@ -24,6 +24,7 @@ Polymer('three-material', {
                 map: texture,
                 overdraw: true
             });
+            material.path = this.path;
         } else {
             material = new THREE.MeshBasicMaterial( { color: 0xA0E5E4, overdraw: 0.5 } );
             if(this.color){

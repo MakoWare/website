@@ -163,68 +163,58 @@ Polymer('three-cube', {
         windowScale += cameraVariance;
         this.object.pageURL = "";
 
-        console.log(faceIndex);
+
+        var materialIndex = this.object.geometry.faces[faceIndex].materialIndex;
+        this.object.pageURL = this.object.material.materials[materialIndex].path;
 
         switch(faceIndex) {
         case 0:
             //blue
             this.object.scale.z = windowScale;
-            this.object.pageURL = "/juke";
             break;
         case 1:
             //blue
             this.object.scale.z = windowScale;
-            this.object.pageURL = "/juke";
             break;
         case 2:
             //orange
             this.object.scale.z = windowScale;
-            this.object.pageURL = "/contact";
             break;
         case 3:
             //orange
             this.object.scale.z = windowScale;
-            this.object.pageURL = "/contact";
             break;
         case 4:
             //red
             this.object.scale.x = windowScale;
-            this.object.pageURL = "/contact";
             break;
         case 5:
             //red
             this.object.scale.x = windowScale;
-            this.object.pageURL = "/contact";
             break;
         case 6:
             //purple
             this.object.scale.x = windowScale;
-            this.object.pageURL = "/juke";
             break;
         case 7:
             //purple
             this.object.scale.x = windowScale;
-            this.object.pageURL = "/juke";
             break;
         case 8:
             //green
             this.object.scale.x = windowScale;
-            this.object.pageURL = "/juke";
             break;
         case 9:
             //green
             this.object.scale.x = windowScale;
-            this.object.pageURL = "/juke";
             break;
         case 10:
             //poop blue
             this.object.scale.x = windowScale;
-            this.object.pageURL = "/juke";
             break;
         case 11:
             //poop blue
             this.object.scale.x = windowScale;
-            this.object.pageURL = "/juke";
             break;
         }
 
