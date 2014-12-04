@@ -5,7 +5,7 @@ Polymer('three-environment', {
         this.createCamera();
         this.createRaycaster();
         this.createScene();
-        this.createStats();
+        //this.createStats();
         this.resizeHandler();
         this.getChildren();
 
@@ -99,7 +99,9 @@ Polymer('three-environment', {
                 }
             });
 
-            stats.update();
+            if(stats){
+                stats.update();
+            }
         };
         window.animate();
     }

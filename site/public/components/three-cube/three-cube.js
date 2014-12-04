@@ -150,7 +150,6 @@ Polymer('three-cube', {
 
         console.log("windowScale: " + windowScale);
 
-
         //Needs Real Math
         var cameraVariance = (windowX - windowY) / 7500;
         console.log(cameraVariance);
@@ -198,7 +197,7 @@ Polymer('three-cube', {
         //Need to stop interval after this
         var windowZoom = setInterval(function(){
             console.log('runnin');
-            if(camera.position.z > 250){
+            if(camera.position.z > 240){
                 camera.position.z -= 5;
             } else {
                 clearInterval(windowZoom);
