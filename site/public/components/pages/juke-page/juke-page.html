@@ -6,8 +6,8 @@
         <core-toolbar id="core-toolbar" layout vertical center>
           <h1>MakoWare</h1>
         </core-toolbar>
-        <div class="container" vertical layout>
-            <paper-shadow z="2" style="margin: 8px; padding: 8px;">
+        <div class="container" vertical layout style="margin-top: 15px">
+          <paper-shadow z="2" style="margin: 8px; padding: 8px;">
               <div>
                 <h1>Juke</h1>
                 <p>Is a web application that allows users to create collaborative playlists.</p>
@@ -18,14 +18,24 @@
                 <p>Currently Juke is for Web and native iOS</p>
               </div>
             </paper-shadow>
-
             <div horizontal layout>
-              <paper-shadow z="3" style="margin: 8px; padding: 8px">
-              <core-image width="400" height="200" sizing="contain" src="/images/jukeScreen1.png"></core-image>
+              <div>
+                <paper-shadow z="3" style="margin: 8px;">
+                  <core-image style="width:300px; height:200px; background-color: lightgray;" sizing="cover" preload src="/images/jukeScreen1.png"></core-image>
+                </paper-shadow>
+              </div>
 
+              <paper-shadow z="3" style="margin: 8px;">
+                <core-image style="width:300px; height:200px; background-color: lightgray;" sizing="cover" preload src="/images/iOS/jukeScreen4.png"></core-image>
               </paper-shadow>
+
+              <paper-shadow z="3" style="margin: 8px;">
+                <core-image style="width:300px; height:200px; background-color: lightgray;" sizing="contain" preload src="/images/jukeScreen3.png"></core-image>
+              </paper-shadow>
+
+
             </div>
-              <button on-click="{{backToCube}}">Back to cube</button>
+            <button on-click="{{backToCube}}">Back to cube</button>
 
         </div>
       </core-header-panel>
