@@ -1,0 +1,22 @@
+<polymer-element name="three-cube" extends="three-mesh">
+ <template>
+
+   <div id="geometryContainer">
+     <three-geometry id="geometry" w="200" h="200" d="200" type="Box"></three-geometry>
+   </div>
+
+   <div id="materialContainer">
+     <three-material id="material" type="MeshFaceMaterial">
+         <three-material type="MeshLambertMaterial" img="images/juke.png" path="/juke"></three-material>
+         <three-material type="MeshLambertMaterial" img="images/contact.png" path="/contact"></three-material>
+         <three-material type="MeshLambertMaterial" img="images/about.png" path="/about"></three-material>
+         <three-material type="MeshLambertMaterial" img="images/github.png" path="/github"></three-material>
+         <three-material type="MeshLambertMaterial" img="images/dos.png" path="/dos"></three-material>
+         <three-material type="MeshLambertMaterial" img="images/derek.png" path="/derek"></three-material>
+     </three-material>
+   </div>
+
+
+  </template>
+  <script src="three-cube.js"></script>
+</polymer-element>

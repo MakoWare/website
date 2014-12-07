@@ -1,0 +1,21 @@
+<link rel="import" href="/app/bower_components/core-header-panel/core-header-panel.html">
+<link rel="import" href="/app/bower_components/core-toolbar/core-toolbar.html">
+
+<polymer-element name="derek-page" extends="mako-page">
+  <template>
+    <div id="pageContent" style="opacity: 0">
+      <core-header-panel mode="seamed" fit>
+        <core-toolbar id="core-toolbar" layout vertical center style="background-color: white">
+          <h2 style="color: #536267;">MakoWare</h2>
+        </core-toolbar>
+
+        <div id="content" class="content">
+          <h1>Derek</h1>
+          <button on-click="{{backToCube}}">Back to cube</button>
+        </div>
+      </core-header-panel>
+
+    </div>
+  </template>
+  <script src="derek-page.js"></script>
+</polymer-element>

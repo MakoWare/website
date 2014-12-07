@@ -1,0 +1,16 @@
+{
+  "directory": "components",
+  "ignore": [
+        "source",
+        "src",
+        "spec",
+        ".bowerrc",
+        ".gitignore",
+        ".jshintignore",
+        ".jshintrc",
+        "bower.json",
+        "gruntfile.js",
+        "package.json",
+        "README.md"
+    ]
+}
