@@ -5,6 +5,7 @@ Polymer('juke-page', {
         this.changeBackground();
         this.fadeIn();
 
+
         console.log("juke page ready()");
     },
 

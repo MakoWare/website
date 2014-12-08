@@ -1,14 +1,23 @@
 <polymer-element name="juke-page" extends="mako-page">
   <template>
+    <link href="/css/bootstrap/bootstrap.min.css" rel="stylesheet">
     <link href="/css/main.css" rel="stylesheet" >
     <div id="pageContent" style="opacity: 0">
       <core-header-panel mode="seamed" fit>
         <core-toolbar id="core-toolbar" layout vertical center>
           <h1>MakoWare</h1>
         </core-toolbar>
-        <div class="container" vertical layout style="margin-top: 15px">
-          <paper-shadow z="2" style="margin: 8px; padding: 8px;">
-              <div>
+        <div class="container-fluid">
+          <div class="row" style="margin-top: 15px;">
+
+            <div class="col-xs-4">
+              <paper-shadow z="2" style="margin: 8px;">
+                <img class="img-responsive" src="/images/jukeFavi.png" >
+              </paper-shadow>
+            </div>
+
+            <div class="col-xs-8">
+              <paper-shadow z="2" style="margin: 8px; padding: 8px;">
                 <h1>Juke</h1>
                 <p>Is a web application that allows users to create collaborative playlists.</p>
                 <p>Start your own playlist "Hub" or join someone's to start building an interactive playlist.</p>
@@ -16,28 +25,28 @@
                 <p>Vote songs up or down to change the order they will be played.</p>
                 <p>Let Juke be the all request Dj at your next party.</p>
                 <p>Currently Juke is for Web and native iOS</p>
-              </div>
-            </paper-shadow>
-            <div horizontal layout>
-              <div>
-                <paper-shadow z="3" style="margin: 8px;">
-                  <core-image style="width:300px; height:200px; background-color: lightgray;" sizing="cover" preload src="/images/jukeScreen1.png"></core-image>
-                </paper-shadow>
-              </div>
-
-              <paper-shadow z="3" style="margin: 8px;">
-                <core-image style="width:300px; height:200px; background-color: lightgray;" sizing="cover" preload src="/images/iOS/jukeScreen4.png"></core-image>
               </paper-shadow>
+            </div>
 
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
               <paper-shadow z="3" style="margin: 8px;">
-                <core-image style="width:300px; height:200px; background-color: lightgray;" sizing="contain" preload src="/images/jukeScreen3.png"></core-image>
+                <img class="img-responsive" src="/images/jukeScreen1.png">
               </paper-shadow>
+            </div>
+          </div>
 
+          <div class="row">
+            <div class="col-xs-12">
+              <paper-shadow z="3" style="margin: 8px;">
+                <img class="img-responsive" src="/images/jukeScreen3.png">
+              </paper-shadow>
 
             </div>
-            <button on-click="{{backToCube}}">Back to cube</button>
-
+          </div>
         </div>
+        <button on-click="{{backToCube}}">Back to cube</button>
       </core-header-panel>
     </div>
   </template>

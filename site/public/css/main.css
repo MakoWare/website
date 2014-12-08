@@ -2,6 +2,7 @@ html,body {
     height: 100%;
     margin: 0;
     font-family: 'Orbitron', sans-serif;
+    color: white;
 }
 
 core-header-panel {
@@ -23,44 +24,6 @@ core-toolbar {
     user-select: none;
     text-transform: uppercase;
 }
-.container {
-    color: white;
-    width: 80%;
-    margin: 50px auto;
-}
-
-.content {
-    width: 100%;
-    height: 100%;
-}
 
 
-#hero1 {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 300px;
-    height: 300px;
-    background-color: orange;
-  }
-  #hero2 {
-    position: absolute;
-    width: 100%;
-    height: 111px;
-    background-color: orange;
-  }
-  #bottom1, #bottom2 {
-    position: absolute;
-    bottom: 0;
-    top: 0;
-    left: 0;
-    height: 50px;
-  }
-  #bottom1 {
-    background-color: blue;
-  }
-  #bottom2 {
-    background-color: green;
-  }
-
-   canvas { width: 100%; height: 100% }
+canvas { width: 100%; height: 100% }

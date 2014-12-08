@@ -1,13 +1,15 @@
-<link rel="import" href="/app/bower_components/core-header-panel/core-header-panel.html">
-<link rel="import" href="/app/bower_components/core-toolbar/core-toolbar.html">
+<link rel="import" href="/components/core-header-panel/core-header-panel.html">
+<link rel="import" href="/components/core-toolbar/core-toolbar.html">
 
 <polymer-element name="about-page" extends="mako-page">
   <template>
+  <link href="/css/main.css" rel="stylesheet" >
     <div id="pageContent" style="opacity: 0">
 
+     <div class="row">
       <core-header-panel mode="seamed" fit>
-        <core-toolbar id="core-toolbar" layout vertical center style="background-color: white">
-          <h2 style="color: #536267;">MakoWare</h2>
+        <core-toolbar id="core-toolbar" layout vertical center>
+          <h1>MakoWare</h1>
         </core-toolbar>
 
         <div id="content" class="content">
