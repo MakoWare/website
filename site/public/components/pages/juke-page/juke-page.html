@@ -3,51 +3,50 @@
     <link href="/css/bootstrap/bootstrap.min.css" rel="stylesheet">
     <link href="/css/main.css" rel="stylesheet" >
     <div id="pageContent" style="opacity: 0">
-      <core-header-panel mode="seamed" fit>
-        <core-toolbar id="core-toolbar" layout vertical center>
-          <h1>MakoWare</h1>
-        </core-toolbar>
-        <div class="container-fluid">
-          <div class="row" style="margin-top: 15px;">
+      <mako-nav></mako-nav>
+      <div class="container-fluid">
+        <div class="row" style="margin-top: 15px;">
 
-            <div class="col-xs-4">
-              <paper-shadow z="2" style="margin: 8px;" on-click="{{goToJuke}}">
-                <img class="img-responsive" src="/images/jukeFavi.png" >
-              </paper-shadow>
-            </div>
-
-            <div class="col-xs-8">
-              <paper-shadow z="2" style="margin: 8px; padding: 8px;">
-                <h1>Juke</h1>
-                <p>Is a web application that allows users to create collaborative playlists.</p>
-                <p>Start your own playlist "Hub" or join someone's to start building an interactive playlist.</p>
-                <p>Tell friends to join your hub to add songs from youtube to your playlist</p>
-                <p>Vote songs up or down to change the order they will be played.</p>
-                <p>Let Juke be the all request Dj at your next party.</p>
-                <p>Currently Juke is for Web and native iOS</p>
-              </paper-shadow>
-            </div>
-
-          </div>
-          <div class="row">
-            <div class="col-xs-12">
-              <paper-shadow z="3" style="margin: 8px;">
-                <img class="img-responsive" src="/images/jukeScreen1.png">
-              </paper-shadow>
-            </div>
+          <div class="col-xs-2">
+            <paper-shadow z="3" style="margin: 8px;" on-click="{{goToJuke}}">
+              <img class="img-responsive" src="/images/jukeFavi.png" >
+            </paper-shadow>
           </div>
 
-          <div class="row">
-            <div class="col-xs-12">
-              <paper-shadow z="3" style="margin: 8px;">
-                <img class="img-responsive" src="/images/jukeScreen3.png">
-              </paper-shadow>
+          <div class="col-xs-10">
+            <paper-shadow z="3" style="margin: 8px; padding: 8px;">
+              <h1>Juke</h1>
+              <p>Is a web application that allows users to create collaborative playlists.</p>
+              <p>Start your own playlist "Hub" or join someone's to start building an interactive playlist.</p>
+              <p>Tell friends to join your hub to add songs from youtube to your playlist</p>
+              <p>Vote songs up or down to change the order they will be played.</p>
+              <p>Let Juke be the all request Dj at your next party.</p>
+              <p>Currently Juke is for Web and native iOS</p>
+            </paper-shadow>
+          </div>
 
-            </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-4">
+            <paper-shadow z="3" style="margin: 8px;">
+              <img class="img-responsive" src="/images/jukeScreen1.png">
+            </paper-shadow>
+          </div>
+
+          <div class="col-xs-4">
+            <paper-shadow z="3" style="margin: 8px;">
+              <img class="img-responsive" src="/images/jukeScreen3.png">
+            </paper-shadow>
+          </div>
+
+          <div class="col-xs-4">
+            <paper-shadow z="3" style="margin: 8px;">
+              <img class="img-responsive" src="/images/iOS/jukeScreen4.png">
+            </paper-shadow>
           </div>
         </div>
-        <button on-click="{{backToCube}}">Back to cube</button>
-      </core-header-panel>
+      </div>
+      <button on-click="{{backToCube}}">Back to cube</button>
     </div>
   </template>
   <script src="juke-page.js"></script>
