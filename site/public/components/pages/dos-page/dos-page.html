@@ -4,16 +4,12 @@
 <polymer-element name="dos-page" extends="mako-page">
   <template>
     <div id="pageContent" style="opacity: 0">
-      <core-header-panel mode="seamed" fit>
-        <core-toolbar id="core-toolbar" layout vertical center style="background-color: white">
-          <h2 style="color: #536267;">MakoWare</h2>
-        </core-toolbar>
+      <mako-nav></mako-nav>
 
         <div id="content" class="content">
           <h1>Dos</h1>
           <button on-click="{{backToCube}}">Back to cube</button>
         </div>
-      </core-header-panel>
 
     </div>
   </template>

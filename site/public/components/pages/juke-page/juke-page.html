@@ -1,42 +1,37 @@
 <link rel="import" href="/components/mako-images/mako-images.html">
+<link rel="import" href="/components/core-image/core-image.html">
+<link rel="import" href="/components/core-media-query/core-media-query.html">
 <polymer-element name="juke-page" extends="mako-page">
   <template>
-    <link href="/css/bootstrap/bootstrap.min.css" rel="stylesheet">
     <link href="/css/main.css" rel="stylesheet" >
-    <div id="pageContent" style="opacity: 0">
-      <mako-nav></mako-nav>
-      <div class="container-fluid mako-page">
-        <div class="row" style="margin-top: 15px;">
 
-          <div class="col-xs-4 col-md-3">
-            <paper-shadow z="3" style="margin: 8px;" on-click="{{goToJuke}}">
-              <img class="img-responsive" src="/images/jukeFavi.png" >
+    <div id="page" style="opacity: 0">
+      <mako-nav></mako-nav>
+      <div vertical layout>
+        <core-media-query query="max-width: 640px"
+                          queryMatches="{{phoneScreen}}"></core-media-query>
+        <div layout vertical?="{{phoneScreen}}"
+             horizontal?="{{!phoneScreen}}">
+          <div id="jukeIcon" >
+            <paper-shadow z="3" style="margin: 16px;" on-click="{{goToJuke}}">
+              <core-image id="jukeIconImage" style="width:280px; height:280px; background-color: lightgray;"
+                          sizing="cover" preload fade  src="/images/jukeFavi.png" sizing="contain"></core-image>
             </paper-shadow>
           </div>
 
-          <div class="col-xs-8 col-md-9">
-            <paper-shadow z="3" style="margin: 8px; padding: 8px;">
+          <div id="jukeInfo" flex three>
+            <paper-shadow z="3" style="margin: 16px; padding: 8px;">
               <h1>Juke</h1>
               <p>Is a web application that allows users to create collaborative playlists.</p>
               <p>Start your own playlist "Hub" or join someone's to start building an interactive playlist.</p>
               <p>Tell friends to join your hub to add songs from youtube to your playlist. Vote songs up or down to change the order they will be played.</p>
               <p>Let Juke be the all request Dj at your next party. Currently Juke is for Web and native iOS</p>
-              <p><-- Click Icon to try it out!</p>
+              <p>Click the Icon to try it out!</p>
 
             </paper-shadow>
           </div>
-
-        </div>
-        <div class="row">
-          <div class="col-xs-12">
-              <div align="center">
-                <mako-images> </mako-images>
-              </div>
-          </div>
         </div>
       </div>
-      <button on-click="{{backToCube}}">Back to cube</button>
-    </div>
   </template>
   <script src="juke-page.js"></script>
 </polymer-element>

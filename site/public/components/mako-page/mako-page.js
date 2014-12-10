@@ -5,7 +5,7 @@ Polymer('mako-page', {
     },
 
     fadeIn: function(){
-        var pageContent = this.$.pageContent;
+        var pageContent = this.$.page;
 
         var opacity = 0;
         var fadeInterval = setInterval(function(){

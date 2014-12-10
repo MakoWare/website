@@ -4,7 +4,8 @@ Polymer('juke-page', {
 
         this.changeBackground();
         this.fadeIn();
-
+        this.scaleImages();
+        this.onResize();
 
         console.log("juke page ready()");
     },
@@ -16,7 +17,7 @@ Polymer('juke-page', {
     goToJuke: function(){
         $('body' ).css('background-image', "none");
 
-        var pageContent = this.$.pageContent;
+        var pageContent = this.$.page;
         var opacity = 1;
 
 
@@ -29,7 +30,22 @@ Polymer('juke-page', {
                 window.location.href = "http://juke.parseapp.com";
             }
         }, 50);
-    }
+    },
 
+    scaleImages: function(){
+
+
+
+    },
+
+
+    onResize: function(){
+        var self = this;
+        $(window).resize(function(){
+            self.scaleImages();
+
+        });
+
+    }
 
 });

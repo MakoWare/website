@@ -11,9 +11,53 @@ body {
 
 }
 
-.mako-page {
-    margin-top: 70px;
 
+#cubeIcon {
+    width: 50px;
+}
+
+#cubeIcon /deep/ core-icon[role=img] {
+    height: 50px;
+    width: 50px;
+}
+
+#cubeIcon /deep/ .button-content {
+    padding: 0px;
+    height: 50px;
+    width: 50px;
+    background-color: #DDD;
+}
+
+#cubeIcon /deep/ paper-shadow {
+    padding: 0px;
+    height: 50px;
+    width: 50px;
+}
+
+#cubeIcon /deep/ paper-ripple {
+    padding: 0px;
+    height: 50px;
+    width: 50px;
+}
+
+#cubeIcon /deep/ content {
+    padding: 0px;
+    height: 50px;
+    width: 50px;
+}
+
+
+
+
+#page {
+    margin-top: 70px;
+}
+
+mako-nav {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
 }
 
 .navbar-brand {
