@@ -1,18 +1,22 @@
-<link rel="import" href="/app/bower_components/core-header-panel/core-header-panel.html">
-<link rel="import" href="/app/bower_components/core-toolbar/core-toolbar.html">
-
 <polymer-element name="contact-page" extends="mako-page">
   <template>
-    <div id="pageContent" style="opacity: 0">
-
-
+    <link href="/css/main.css" rel="stylesheet" >
+    <div id="page" style="opacity: 0">
       <mako-nav></mako-nav>
 
-        <div id="content" class="content">
-          <h1> Contact</h1>
-          <button on-click="{{backToCube}}">Back to cube</button>
+      <div vertical layout>
+        <core-media-query query="max-width: 640px"
+                          queryMatches="{{phoneScreen}}"></core-media-query>
+        <div layout vertical?="{{phoneScreen}}"
+             horizontal?="{{!phoneScreen}}">
+          <div id="about" flex>
+            <paper-shadow z="3" style="margin: 16px; padding: 8px;">
+              <h1>Contact</h1>
+              <p>Regardless of the content and context, hate mail, or love letters, please send all mail to developer@makowaredev.com</p><p>Thanks, and hope to hear from you soon!</p>
+            </paper-shadow>
+          </div>
         </div>
-
+      </div>
     </div>
   </template>
   <script src="contact-page.js"></script>

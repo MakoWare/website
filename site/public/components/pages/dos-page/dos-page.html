@@ -1,17 +1,24 @@
-<link rel="import" href="/app/bower_components/core-header-panel/core-header-panel.html">
-<link rel="import" href="/app/bower_components/core-toolbar/core-toolbar.html">
-
 <polymer-element name="dos-page" extends="mako-page">
   <template>
-    <div id="pageContent" style="opacity: 0">
+    <link href="/css/main.css" rel="stylesheet" >
+    <div id="page" style="opacity: 0">
       <mako-nav></mako-nav>
 
-        <div id="content" class="content">
-          <h1>Dos</h1>
-          <button on-click="{{backToCube}}">Back to cube</button>
+      <div vertical layout>
+        <core-media-query query="max-width: 640px"
+                          queryMatches="{{phoneScreen}}"></core-media-query>
+        <div layout vertical?="{{phoneScreen}}"
+             horizontal?="{{!phoneScreen}}">
+          <div id="dos" flex>
+            <paper-shadow z="3" style="margin: 16px; padding: 8px;">
+              <h1>Dos</h1>
+              <p>Page for MakoDos</p>
+            </paper-shadow>
+          </div>
         </div>
-
+      </div>
     </div>
+
   </template>
   <script src="dos-page.js"></script>
 </polymer-element>

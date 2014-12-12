@@ -1,16 +1,21 @@
-<link rel="import" href="/app/bower_components/core-header-panel/core-header-panel.html">
-<link rel="import" href="/app/bower_components/core-toolbar/core-toolbar.html">
-
 <polymer-element name="github-page" extends="mako-page">
   <template>
-    <div id="pageContent" style="opacity: 0">
+    <div id="page" style="opacity: 0">
       <mako-nav></mako-nav>
 
-        <div id="content" class="content">
-          <h1>GitHub</h1>
-          <button on-click="{{backToCube}}">Back to cube</button>
+      <div vertical layout>
+        <core-media-query query="max-width: 640px"
+                          queryMatches="{{phoneScreen}}"></core-media-query>
+        <div layout vertical?="{{phoneScreen}}"
+             horizontal?="{{!phoneScreen}}">
+          <div id="github" flex>
+            <paper-shadow z="3" style="margin: 16px; padding: 8px;">
+              <h1>GitHub</h1>
+              <p>Page for MakoWare's github</p>
+            </paper-shadow>
+          </div>
         </div>
-
+      </div>
     </div>
   </template>
   <script src="github-page.js"></script>
