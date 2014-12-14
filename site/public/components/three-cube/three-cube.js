@@ -19,7 +19,6 @@ Polymer('three-cube', {
 	this.windowHalfY = window.innerHeight / 2;
 
         this.moved = false;
-        //this.object.previewAnimation = true;
         this.object.currentAnimation = "preview";
 
         $(document).on("mousedown", this.onDocumentMouseDown.bind(this));
@@ -31,7 +30,26 @@ Polymer('three-cube', {
         console.log("three-cube: ready()");
     },
 
+
+    zoomOut: function(){
+        var windowZoom = setInterval(function(){
+            console.log('zooming out');
+            if(camera.position.z < 470){
+                camera.position.z += 5;
+            } else {
+                clearInterval(windowZoom);
+            }
+        }, 10);
+
+
+    },
+
     selectFace: function(event){
+        $(document).unbind("mousedown");
+        $(document).unbind("mousemove");
+        $(document).unbind("mouseup");
+        $(document).unbind("mouseout");
+
 	event.preventDefault();
         console.log("select Face");
         console.log(event);

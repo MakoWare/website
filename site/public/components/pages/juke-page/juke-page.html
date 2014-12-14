@@ -14,8 +14,7 @@
              horizontal?="{{!phoneScreen}}">
           <div id="jukeIcon" >
             <paper-shadow z="3" style="margin: 16px;" on-click="{{goToJuke}}">
-              <core-image id="jukeIconImage" style="width:280px; height:280px; background-color: lightgray;"
-                          sizing="cover" preload fade  src="/images/jukeFavi.png" sizing="contain"></core-image>
+              <core-image id="jukeIconImage" style="width:280px; height:280px; background-color: lightgray;" sizing="cover" preload fade  src="/images/jukeFavi.png" sizing="contain" ></core-image>
             </paper-shadow>
           </div>
 
@@ -27,10 +26,14 @@
               <p>Tell friends to join your hub to add songs from youtube to your playlist. Vote songs up or down to change the order they will be played.</p>
               <p>Let Juke be the all request Dj at your next party. Currently Juke is for Web and native iOS</p>
               <p>Click the Icon to try it out!</p>
-
             </paper-shadow>
           </div>
         </div>
+        <div id="jukePhotos" layout horizontal center-center >
+          <paper-shadow z="3" style="margin: 16px;">
+            <core-image id="jukeScreen1" style="width:880px; height:580px; background-color: lightgray;" sizing="cover" preload fade  src="/images/jukeScreen1.png" sizing="cover" ></core-image>                      </papershadow>
+        </div>
+
       </div>
   </template>
   <script src="juke-page.js"></script>
