@@ -8,9 +8,12 @@ html,body {
 }
 
 body {
-
+    overflow: hidden;
 }
 
+#content {
+    margin: 7%;
+}
 
 #cubeIcon {
     width: 50px;
@@ -48,9 +51,10 @@ body {
 
 
 
-
 #page {
     margin-top: 70px;
+    overflow: auto;
+    opacity: 0;
 }
 
 mako-nav {

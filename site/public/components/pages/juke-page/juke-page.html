@@ -1,15 +1,14 @@
-<link rel="import" href="/components/mako-images/mako-images.html">
+<link rel="import" href="/components/mako-components/mako-image/mako-image.html">
 <link rel="import" href="/components/core-image/core-image.html">
 <link rel="import" href="/components/core-media-query/core-media-query.html">
+
 <polymer-element name="juke-page" extends="mako-page">
   <template>
     <link href="/css/main.css" rel="stylesheet" >
-
-    <div id="page" style="opacity: 0">
+    <div id="page">
       <mako-nav></mako-nav>
       <div vertical layout>
-        <core-media-query query="max-width: 640px"
-                          queryMatches="{{phoneScreen}}"></core-media-query>
+        <core-media-query query="max-width: 640px" queryMatches="{{phoneScreen}}"></core-media-query>
         <div layout vertical?="{{phoneScreen}}"
              horizontal?="{{!phoneScreen}}">
           <div id="jukeIcon" >
@@ -30,11 +29,12 @@
           </div>
         </div>
         <div id="jukePhotos" layout horizontal center-center >
-          <paper-shadow z="3" style="margin: 16px;" >
-            <core-image id="jukeScreen1" style="width:880px; height:580px; background-color: lightgray;" sizing="cover" preload fade  src="/images/jukeScreen1.png" sizing="cover" ></core-image>                      </papershadow>
+          <paper-shadow z="3" style="margin: 16px;">
+            <mako-image src="/images/jukeScreen1.png" mode="relative" relativeTo="windowWidth" wPercent="80"  metrix="%"></mako-image>
+          </paper-shadow>
         </div>
-
       </div>
+
   </template>
   <script src="juke-page.js"></script>
 </polymer-element>
