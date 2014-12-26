@@ -3,7 +3,7 @@ var gulp = require('gulp'),
 
 gulp.task('default', ['connect'], function () {
 
-    gulp.watch(['index.html', 'components/**/**.*', 'css/**.*', 'images/**.*'], function (event) {
+    gulp.watch(['index.html', 'components/**/**.*', 'css/**/**.*', 'js/**/**.*', 'images/**/**.*'], function (event) {
         return gulp.src(event.path)
             .pipe($.connect.reload());
     });

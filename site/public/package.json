@@ -1,17 +1,27 @@
 {
-    "name": "MakoWare",
+    "name": "DaltonTrade",
     "version": "1.0.0",
-    "description": "MakoWare's website",
-    "main": ".#gulpfile.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+    "description": "A web page for my brother's twitter/stock market antics",
+    "main": "gulpfile.js",
+    "dependencies": {
     },
-    "author": "yin",
-    "license": "ISC",
     "devDependencies": {
-        "gulp": "^3.6.0",
+        "gulp": "^3.8.10",
         "gulp-load-plugins": "~0.5.0",
         "gulp-browserify": "~0.5.0",
         "gulp-connect": "~2.0.4"
-    }
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/yintothayang/DaltonTrade.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/yintothayang/DaltonTrade/issues"
+    },
+    "homepage": "https://github.com/yintothayang/DaltonTrade"
 }

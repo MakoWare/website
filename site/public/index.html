@@ -1,42 +1,40 @@
 <!DOCTYPE html>
-<html  style="height: 100%">
+<html lang="en">
   <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>MakoWare</title>
 
-    <script src="components/webcomponentsjs/webcomponents.min.js"></script>
-    <script src="components/jquery/dist/jquery.min.js"></script>
-    <script src="libs/three-js/three.min.js"></script>
-    <script src="libs/three-js/Projector.js"></script>
-    <script src="libs/three-js/CanvasRenderer.js"></script>
-    <script src="libs/three-js/stats.min.js"></script>
-
-    <link rel="import" href="components/app-router/app-router.html">
-    <link rel="import" href="components/three-environment/three-environment.html">
-    <link rel="import" href="components/three-object/three-object.html">
-    <link rel="import" href="components/three-mesh/three-mesh.html">
-    <link rel="import" href="components/three-geometry/three-geometry.html">
-    <link rel="import" href="components/three-material/three-material.html">
-    <link rel="import" href="components/three-cube/three-cube.html">
-    <link rel="import" href="components/three-plane/three-plane.html">
-
-    <link rel="import" href="components/mako-components/mako-page/mako-page.html">
     <link href="http://fonts.googleapis.com/css?family=Orbitron:500" rel="stylesheet" type="text/css">
-    <link href="http://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
-    <link href="/css/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/skeleton.css">
+    <link rel="stylesheet" href="/css/main.css">
 
+    <script src="components/jquery/dist/jquery.min.js"></script>
   </head>
-  <body unresolved fullbleed>
 
-    <app-router mode="hash">
-      <app-route path="/" import="/components/pages/navigation-page/navigation-page.html"></app-route>
-      <app-route path="/juke" import="/components/pages/juke-page/juke-page.html"></app-route>
-      <app-route path="/contact" import="/components/pages/contact-page/contact-page.html"></app-route>
-      <app-route path="/about" import="/components/pages/about-page/about-page.html"></app-route>
-      <app-route path="/github" import="/components/pages/github-page/github-page.html"></app-route>
-      <app-route path="/derek" import="/components/pages/derek-page/derek-page.html"></app-route>
-      <app-route path="/dos" import="/components/pages/dos-page/dos-page.html"></app-route>
-      <app-route path="*" import="/pages/not-found-page.html"></app-route>
-    </app-router>
+  <body>
+    <nav class="navbar">
+      <div class="container">
+        <ul class="navbar-list">
+          <li class="navbar-item"><a class="navbar-link navbar-brand" href="#">MakoWare</a></li>
+        </ul>
+      </div>
+    </nav>
+
+
+    <div class="container" id="content" style="margin-top: 10px">
+      <div class="row">
+        <div class="one-half column category">
+          <img class="u-max-full-width" src="images/placeholder.png">
+        </div>
+        <div class="one-half column category">
+          <img class="u-max-full-width" src="images/placeholder.png">
+        </div>
+      </div>
+      content
+    </div>
+
 
   </body>
 </html>
