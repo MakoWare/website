@@ -1,4 +1,5 @@
 site/config
 site/public/node_modules
+site/public/components
 
 .DS_Store
