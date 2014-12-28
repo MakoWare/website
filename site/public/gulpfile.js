@@ -1,12 +1,23 @@
 var gulp = require('gulp'),
     $ = require('gulp-load-plugins')(),
-    es6ify = require('es6ify');
+    es6ify = require('es6ify'),
+    fs = require('fs'),
+    path = require('path'),
+    merge = require('merge-stream');
+
+var componentsPath = "components";
+
+function getFolders(dir) {
+    return fs.readdirSync(dir)
+        .filter(function(file) {
+            return fs.statSync(path.join(dir, file)).isDirectory();
+        });
+}
 
 
 
 //Default
 gulp.task('default', ['connect'], function () {
-
     gulp.watch(['index.html', 'components/**/**.*', 'css/**/**.*', 'js/**/**.*', 'images/**/**.*'], function (event) {
         return gulp.src(event.path)
             .pipe($.connect.reload());
@@ -22,31 +33,36 @@ gulp.task('connect', function () {
     });
 });
 
-//Build
-gulp.task('build', ['js', 'html', 'copy', 'vulcanize']);
+//Compile Components
+gulp.task('compileComponents', ['js']);
 
 
 //Test
 gulp.task('test', function(){
     console.log("testing");
+
+
+
     return gulp.src('components/home-page/src/home-page.js')
         .pipe($.traceur())
         .pipe(gulp.dest('components/home-page/dist'));
-});
 
+});
 
 //JS
 gulp.task('js', function () {
-    gulp.src([
-        'components/home-page/src/home-page.js'
-    ])
-        .pipe($.plumber())
-        .pipe($.browserify({
-            add: [ es6ify.runtime ],
-            transform: ['es6ify']
-        }))
-        .pipe($.uglify())
-        .pipe(gulp.dest('components/home-page/dist'));
+    var folders = getFolders(componentsPath);
+    var tasks = folders.map(function(folder) {
+        console.log(folder);
+        return gulp.src('components/' + folder + '/src/*.js')
+            .pipe($.sourcemaps.init())
+            .pipe($.traceur())
+            .pipe($.concat(folder + '.js'))
+            .pipe($.sourcemaps.write('.'))
+            .pipe(gulp.dest('components/' + folder + '/dist'));
+    });
+
+    return merge(tasks);
 });
 
 //HTML

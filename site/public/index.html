@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/css/skeleton.css">
     <link rel="stylesheet" href="/css/main.css">
 
-    <script src="components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script>
       if ('registerElement' in document
       && 'createShadowRoot' in HTMLElement.prototype
@@ -24,9 +24,8 @@
       </script>
 
 
-      <link rel="import" href="components/x-gif/dist/x-gif.html">
-      <link rel="import" href="components/app-router/app-router.html">
-      <script src="components/jquery/dist/jquery.min.js"></script>
+
+      <link rel="import" href="bower_components/app-router/app-router.html">
 
   </head>
 
@@ -42,6 +41,7 @@
       </div>
     </nav>
 
+    <x-gif src="http://i.imgur.com/iKXH4E2.gif"></x-gif>
 
     <app-router>
       <app-route path="/" import="/components/home-page/dist/home-page.html"></app-route>

@@ -1,5 +1,5 @@
 site/config
 site/public/node_modules
-site/public/components
+site/public/bower_components
 
 .DS_Store
