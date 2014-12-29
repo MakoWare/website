@@ -33,32 +33,17 @@ gulp.task('connect', function () {
     });
 });
 
-//Compile Components
-gulp.task('compileComponents', ['js']);
+//Build
+gulp.task('build', ['js', 'html']);
 
-
-//Test
-gulp.task('test', function(){
-    console.log("testing");
-
-
-
-    return gulp.src('components/home-page/src/home-page.js')
-        .pipe($.traceur())
-        .pipe(gulp.dest('components/home-page/dist'));
-
-});
 
 //JS
 gulp.task('js', function () {
     var folders = getFolders(componentsPath);
     var tasks = folders.map(function(folder) {
-        console.log(folder);
         return gulp.src('components/' + folder + '/src/*.js')
-            .pipe($.sourcemaps.init())
-            .pipe($.traceur())
             .pipe($.concat(folder + '.js'))
-            .pipe($.sourcemaps.write('.'))
+            .pipe($.traceur())
             .pipe(gulp.dest('components/' + folder + '/dist'));
     });
 
@@ -67,9 +52,13 @@ gulp.task('js', function () {
 
 //HTML
 gulp.task('html', function () {
-    gulp.src('components/home-page/src/home-page.html')
-        .pipe($.rename('home-page.local.html'))
-        .pipe(gulp.dest('components/home-page/dist'));
+    var folders = getFolders(componentsPath);
+    var tasks = folders.map(function(folder) {
+        return gulp.src('components/' + folder + '/src/' + folder + '.html')
+            .pipe($.rename(folder + '.local.html'))
+            .pipe(gulp.dest('components/' + folder + '/dist'));
+    });
+    return merge(tasks);
 });
 
 //CSS
