@@ -27,6 +27,10 @@ class makoPageController {
             $("#contactLink").css("color", "#1EAEDB");
             $("#projectsLink").css("color", "#222");
             $("#aboutLink").css("color", "#222");
+        } else {
+            $("#contactLink").css("color", "#222");
+            $("#projectsLink").css("color", "#222");
+            $("#aboutLink").css("color", "#222");
         }
 
     }
