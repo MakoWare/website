@@ -32,9 +32,9 @@
 
     <mako-nav></mako-nav>
 
-    <app-router mode="hash">
-      <app-route path="/" import="/components/home-page/dist/home-page.html"></app-route>
-      <app-route path="/about" import="/components/about-page/dist/about-page.html"></app-route>
+    <app-router mode="auto">
+      <app-route path="/"  import="/components/home-page/dist/home-page.html" [element="home-page"]></app-route>
+      <app-route path="/about" import="/components/about-page/dist/about-page.html" [element="about-page"]></app-route>
       <app-route path="/contact" import="/components/contact-page/dist/contact-page.html"></app-route>
       <app-route path="/projects" import="/components/projects-page/dist/projects-page.html"></app-route>
       <app-route path="*" import="/components/no-page/dist/no-page.html"></app-route>
