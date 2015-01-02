@@ -25,20 +25,12 @@
       </script>
 
       <link rel="import" href="bower_components/app-router/app-router.html">
+      <link rel="import" href="components/mako-nav/dist/mako-nav.html">
 
   </head>
   <body>
 
-    <nav class="navbar">
-      <div class="container">
-        <ul class="navbar-list">
-          <a class="navbar-link navbar-brand" href="#">MakoWare</a>
-          <li class="navbar-item"><a class="navbar-link"  href="#/contact" id="contactLink">contact</a></li>
-          <li class="navbar-item"><a class="navbar-link"  href="#/projects" id="projectsLink">projects</a></li>
-          <li class="navbar-item"><a class="navbar-link"  href="#/about" id="aboutLink">about</a></li>
-        </ul>
-      </div>
-    </nav>
+    <mako-nav></mako-nav>
 
     <app-router mode="hash">
       <app-route path="/" import="/components/home-page/dist/home-page.html"></app-route>
