@@ -59,20 +59,35 @@ class makoRouterController {
     changeComponents(path){
         var self = this;
         var componentName = path.split("/")[path.split("/").length - 1].split(".")[0];
+        var loaded = false;
         //console.log(componentName);
 
-        //Remove all components in container
+        //Remove all components in container ***Hide them
+        for(var i = 0; i < this.container.childNodes.length; i++){
+            var child = this.container.childNodes[i];
+            if(child.localName == componentName){
+                console.log("loaded");
+                $(child).show();
+                loaded = true;
+            } else {
+                $(child).hide();
+            }
+        }
+        /*
         while (this.container.firstChild) {
             this.container.removeChild(this.container.firstChild);
         }
+        */
 
-        //Import Components
-        function importLoadedCallback() {
-            var customElement = document.createElement(componentName);
-            self.container.appendChild(customElement);
-        };
+        if(!loaded){
+            //Import Components
+            function importLoadedCallback() {
+                var customElement = document.createElement(componentName);
+                self.container.appendChild(customElement);
+            };
 
-        this.importComponent(path, importLoadedCallback);
+            this.importComponent(path, importLoadedCallback);
+        }
     }
 
     //Import Component

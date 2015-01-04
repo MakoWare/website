@@ -45,15 +45,25 @@ var makoRouterController = function makoRouterController(makoRouter) {
   changeComponents: function(path) {
     var self = this;
     var componentName = path.split("/")[path.split("/").length - 1].split(".")[0];
-    while (this.container.firstChild) {
-      this.container.removeChild(this.container.firstChild);
+    var loaded = false;
+    for (var i = 0; i < this.container.childNodes.length; i++) {
+      var child = this.container.childNodes[i];
+      if (child.localName == componentName) {
+        console.log("loaded");
+        $(child).show();
+        loaded = true;
+      } else {
+        $(child).hide();
+      }
     }
-    function importLoadedCallback() {
-      var customElement = document.createElement(componentName);
-      self.container.appendChild(customElement);
+    if (!loaded) {
+      var importLoadedCallback = function() {
+        var customElement = document.createElement(componentName);
+        self.container.appendChild(customElement);
+      };
+      ;
+      this.importComponent(path, importLoadedCallback);
     }
-    ;
-    this.importComponent(path, importLoadedCallback);
   },
   importComponent: function(path, callback) {
     var importLink = document.createElement('link');
