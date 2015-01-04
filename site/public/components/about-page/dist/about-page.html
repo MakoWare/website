@@ -420,9 +420,7 @@ there.
 /* Larger than Desktop HD */
 @media (min-width: 1200px) {}
 </style>
-  <div id="content" style="margin-top: 20px">
-
-
+  <div id="content" style="padding-top: 75px">
     <div class="container">
       <br>
       <br>
@@ -437,6 +435,7 @@ var aboutPageController = function aboutPageController(aboutPage) {
   this.aboutPage = aboutPage;
   this.setupComponent();
   this.srcChanged(this.aboutPage.getAttribute('src'));
+  console.log("aboutPage");
 };
 ($traceurRuntime.createClass)(aboutPageController, {
   setupComponent: function() {

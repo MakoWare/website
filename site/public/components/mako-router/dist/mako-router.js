@@ -1,0 +1,77 @@
+"use strict";
+var owner = (document._currentScript || document.currentScript).ownerDocument;
+var makoRouterController = function makoRouterController(makoRouter) {
+  this.makoRouter = makoRouter;
+  this.setupComponent();
+  console.log("makoRouter");
+};
+($traceurRuntime.createClass)(makoRouterController, {
+  setupComponent: function() {
+    var self = this;
+    this.container = document.createElement("div");
+    this.makoRouter.appendChild(this.container);
+    $(window).on('hashchange', function() {
+      console.log("hashchange");
+      self.loadComponents();
+    });
+    this.loadComponents();
+  },
+  loadComponents: function() {
+    var path = window.location.hash.slice(1);
+    if (path == "") {
+      path = "/";
+    }
+    var match = false;
+    var ultRoute = "";
+    var childNodes = this.makoRouter.childNodes;
+    for (var i = 0; i < childNodes.length; i++) {
+      var child = childNodes[i];
+      if (child.localName == "mako-route") {
+        if (child.attributes.path.nodeValue == path) {
+          match = true;
+          this.changeComponents(child.attributes.import.nodeValue);
+        } else if (child.attributes.path.nodeValue == "*") {
+          ultRoute = child.attributes.import.nodeValue;
+        }
+      }
+    }
+    if (!match && ultRoute != "") {
+      this.changeComponents(ultRoute);
+    }
+  },
+  changeComponents: function(path) {
+    var self = this;
+    var componentName = path.split("/")[path.split("/").length - 1].split(".")[0];
+    while (this.container.firstChild) {
+      this.container.removeChild(this.container.firstChild);
+    }
+    function importLoadedCallback() {
+      var customElement = document.createElement(componentName);
+      self.container.appendChild(customElement);
+    }
+    ;
+    this.importComponent(path, importLoadedCallback);
+  },
+  importComponent: function(path, callback) {
+    var importLink = document.createElement('link');
+    importLink.setAttribute('rel', 'import');
+    importLink.setAttribute('href', path);
+    importLink.addEventListener('load', callback);
+    document.head.appendChild(importLink);
+  }
+}, {});
+var makoRouter = function makoRouter() {
+  $traceurRuntime.superConstructor($makoRouter).apply(this, arguments);
+};
+var $makoRouter = makoRouter;
+($traceurRuntime.createClass)(makoRouter, {createdCallback: function() {
+    this.controller = new makoRouterController(this);
+  }}, {}, HTMLElement);
+document.registerElement('mako-router', makoRouter);
+var makoRoute = function makoRoute() {
+  $traceurRuntime.superConstructor($makoRoute).apply(this, arguments);
+};
+var $makoRoute = makoRoute;
+($traceurRuntime.createClass)(makoRoute, {createdCallback: function() {}}, {}, HTMLElement);
+document.registerElement('mako-route', makoRoute);
+//# sourceURL=mako-router.js

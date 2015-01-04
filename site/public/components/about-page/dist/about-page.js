@@ -4,6 +4,7 @@ var aboutPageController = function aboutPageController(aboutPage) {
   this.aboutPage = aboutPage;
   this.setupComponent();
   this.srcChanged(this.aboutPage.getAttribute('src'));
+  console.log("aboutPage");
 };
 ($traceurRuntime.createClass)(aboutPageController, {
   setupComponent: function() {

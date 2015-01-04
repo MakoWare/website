@@ -5,7 +5,7 @@ class contactPageController {
     constructor(contactPage) {
         this.contactPage = contactPage;
         this.setupComponent();
-        this.srcChanged(this.contactPage.getAttribute('src'));
+        console.log("contactPage");
     }
 
     setupComponent() {
@@ -15,11 +15,6 @@ class contactPageController {
         // stamp out our template in the shadow dom
         var template = owner.querySelector("#template").content.cloneNode(true);
         this.shadow.appendChild(template);
-    }
-
-    srcChanged(src) {
-        if (!src) return;
-        console.log("Loading " + src);
     }
 }
 

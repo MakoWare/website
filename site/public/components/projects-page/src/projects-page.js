@@ -5,6 +5,7 @@ class projectsPageController {
     constructor(projectsPage) {
         this.projectsPage = projectsPage;
         this.setupComponent();
+        console.log("projectsPage");
     }
 
     setupComponent() {

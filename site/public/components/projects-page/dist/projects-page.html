@@ -420,8 +420,7 @@ there.
 /* Larger than Desktop HD */
 @media (min-width: 1200px) {}
 </style>
-  <div id="content" style="margin-top: 20px">
-
+  <div id="content" style="padding-top: 75px">
     <div class="section hero">
       <div class="container">
         <br>
@@ -433,7 +432,6 @@ there.
       </div>
     </div>
 
-
     <div class="section hero" id="juke" style="color: white">
       <div class="container">
         <br>
@@ -443,7 +441,9 @@ there.
             <h4 class="hero-heading">Juke</h4>
             <h5>Build democratic playlists from any device.</h5>
             <h5>Vote on queued songs to change play order.</h5>
-            <a class="button button-primary" href="#">Try Juke</a>
+            <h5>Available on iOS and on the Web!</h5>
+            <a class="button button-primary" href="http://juke.parseapp.com">Try Juke For the Web</a>
+            <a class="button button-primary" href="https://itunes.apple.com/us/app/juke-democratic-playlists/id852959492?">Try Juke For iOS</a>
           </div>
           <div class="one-third column">
             <img class="u-max-full-width" src="images/jukeFavi.png">
@@ -462,6 +462,7 @@ var owner = (document._currentScript || document.currentScript).ownerDocument;
 var projectsPageController = function projectsPageController(projectsPage) {
   this.projectsPage = projectsPage;
   this.setupComponent();
+  console.log("projectsPage");
 };
 ($traceurRuntime.createClass)(projectsPageController, {
   setupComponent: function() {

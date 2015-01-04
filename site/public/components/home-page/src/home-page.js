@@ -5,7 +5,7 @@ class homePageController {
     constructor(homePage) {
         this.homePage = homePage;
         this.setupComponent();
-        this.srcChanged(this.homePage.getAttribute('src'));
+        console.log("homePage");
     }
 
     setupComponent() {
@@ -15,11 +15,6 @@ class homePageController {
         // stamp out our template in the shadow dom
         var template = owner.querySelector("#template").content.cloneNode(true);
         this.shadow.appendChild(template);
-    }
-
-    srcChanged(src) {
-        if (!src) return;
-        console.log("Loading " + src);
     }
 }
 

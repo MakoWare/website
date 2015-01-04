@@ -7,6 +7,7 @@ class aboutPageController {
         //this.aboutPage.super();
         this.setupComponent();
         this.srcChanged(this.aboutPage.getAttribute('src'));
+        console.log("aboutPage");
     }
 
     setupComponent() {

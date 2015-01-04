@@ -3,6 +3,7 @@ var owner = (document._currentScript || document.currentScript).ownerDocument;
 var projectsPageController = function projectsPageController(projectsPage) {
   this.projectsPage = projectsPage;
   this.setupComponent();
+  console.log("projectsPage");
 };
 ($traceurRuntime.createClass)(projectsPageController, {
   setupComponent: function() {

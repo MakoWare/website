@@ -25,21 +25,33 @@
       </script>
 
       <link rel="import" href="bower_components/app-router/app-router.html">
+      <link rel="import" href="components/mako-router/dist/mako-router.html">
       <link rel="import" href="components/mako-nav/dist/mako-nav.html">
+
 
   </head>
   <body>
 
     <mako-nav></mako-nav>
 
+    <mako-router>
+      <mako-route path="/" import="/components/home-page/dist/home-page.html"></mako-route>
+      <mako-route path="/about" import="/components/about-page/dist/about-page.html"></mako-route>
+      <mako-route path="/contact" import="/components/contact-page/dist/contact-page.html"></mako-route>
+      <mako-route path="/projects" import="/components/projects-page/dist/projects-page.html"></mako-route>
+      <mako-route path="*" import="/components/no-page/dist/no-page.html"></mako-route>
+
+    </mako-router>
+
+    <!--
     <app-router mode="auto">
-      <app-route path="/"  import="/components/home-page/dist/home-page.html" [element="home-page"]></app-route>
-      <app-route path="/about" import="/components/about-page/dist/about-page.html" [element="about-page"]></app-route>
+      <app-route path="/"  import="/components/home-page/dist/home-page.html"></app-route>
+      <app-route path="/about" import="/components/about-page/dist/about-page.html"></app-route>
       <app-route path="/contact" import="/components/contact-page/dist/contact-page.html"></app-route>
       <app-route path="/projects" import="/components/projects-page/dist/projects-page.html"></app-route>
       <app-route path="*" import="/components/no-page/dist/no-page.html"></app-route>
     </app-router>
-
+    -->
 
   </body>
 </html>
