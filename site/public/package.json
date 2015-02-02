@@ -1,7 +1,7 @@
 {
-  "name": "DaltonTrade",
+  "name": "MakoWare",
   "version": "1.0.0",
-  "description": "A web page for my brother's twitter/stock market antics",
+  "description": "",
   "main": "gulpfile.js",
   "dependencies": {},
   "devDependencies": {
