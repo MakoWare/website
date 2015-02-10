@@ -1,15 +1,28 @@
 <template id="template">
-  <link rel="stylesheet" href="main.css"/>
   <link rel="stylesheet" href="skeleton.css"/>
+  <link rel="stylesheet" href="main.css"/>
     <nav class="navbar">
       <div class="container">
         <ul class="navbar-list">
           <a class="navbar-link navbar-brand" href="#">MakoWare</a>
-          <li class="navbar-item"><a class="navbar-link"  href="#/contact" id="contactLink">contact</a></li>
-          <li class="navbar-item"><a class="navbar-link"  href="#/projects" id="projectsLink">projects</a></li>
-          <li class="navbar-item"><a class="navbar-link"  href="#/about" id="aboutLink">about</a></li>
+          <li class="navbar-item"><a class="navbar-link dropDown"  href="#/contact" id="contactLink">contact</a></li>
+          <li class="navbar-item"><a class="navbar-link dropDown"  href="#/projects" id="projectsLink">projects</a></li>
+          <li class="navbar-item"><a class="navbar-link dropDown"  href="#/about" id="aboutLink">about</a></li>
+          <li class="navbar-item"><a class="navbar-link dropUp"  id="dropUp"><img src="/images/hamburger.png" id="burger"></a></li>
         </ul>
       </div>
     </nav>
+
+    <div id="mobileNav" style="display: none">
+      <div style="width: 100%; height: 33%; background-color: rgba(0, 0, 0, .8)" class="row" align="center">
+        <a id="d1" href="#/contact" style="color: white; text-decoration: none; margin: 50%;"><p style="font-size: 8rem; ">Contact</p><a>
+      </div>
+      <div style="width: 100%; height: 33%; background-color: rgba(0, 0, 0, .9)" class="row" align="center">
+        <a id="d2" href="#/projects" style="color: white; text-decoration: none; margin: 50%"><p style="font-size: 8rem; ">Projects</p><a>
+      </div>
+      <div style="width: 100%; height: 33%; background-color: rgba(0, 0, 0, 1)" class="row" align="center">
+        <a id="d3" href="#/about" style="color: white; text-decoration: none; margin: 50%"><p style="font-size: 8rem; ">About</p><a>
+      </div>
+    </div>
 </template>
 <script src="mako-nav.js"></script>

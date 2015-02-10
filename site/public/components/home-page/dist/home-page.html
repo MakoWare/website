@@ -134,19 +134,27 @@
     width: 80%; }
 
   .navbar-brand{
-    font-size: 1.5rem;
+    font-size: 2.1rem;
+    margin-left: 2rem;
+  }
+
+  #burger {
+      width: 32px;
+      margin-top: 15px;
   }
 
 
+@media (max-width: 750px) {
+    .dropDown {
+        display: none;
+    }
+}
 
 
-/*
-.navbar {
-    display: none; }
-*/
 
 /* Larger than phone */
 @media (min-width: 550px) {
+
   .header {
     margin-top: 18rem; }
   .value-props {
@@ -172,6 +180,10 @@
 
 /* Larger than tablet */
 @media (min-width: 750px) {
+    .dropUp {
+        display: none;
+    }
+
   /* Navbar */
   .navbar + .docs-section {
     border-top-width: 0; }
@@ -222,7 +234,6 @@
   .navbar-brand{
     font-size: 22px;
   }
-
 
 
   /* Popover */
@@ -308,14 +319,12 @@
 
 
 
-/* Shared
-â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“ */
+/* Shared */
 .button {
   border-radius: 100px;
 }
 
-/* Sections
-â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“ */
+/* Sections */
 .section {
   padding: 8rem 0 7rem;
   text-align: center;
@@ -325,19 +334,6 @@
   margin-bottom: 1.2rem;
 }
 
-/* Hero
-â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“ */
-.phones {
-  position: relative;
-}
-.phone {
-  position: relative;
-  max-width: 80%;
-  margin: 3rem auto -12rem;
-}
-.phone + .phone {
-  display: none;
-}
 
 /* Home */
 .home {
@@ -345,60 +341,28 @@
   color: #fff;
   padding-bottom: 5rem;
 }
-.home-multiplier {
-  margin-bottom: .5rem;
-  color: #11DFC7;
-}
 .home-heading {
   margin-bottom: .3rem;
 }
-.home-description {
-  opacity: .8;
-  font-weight: 300;
-}
 
 /* Clients */
-
 .clients {
     padding: 5rem 0 7rem;
     text-align: center;
 }
 
-
-/* Categories
-â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“ */
-.categories {
-
-  background-size: cover;
-  color: #fff;
+.clients-heading {
+  margin-bottom: 8rem;
 }
-.categories .section-description {
-  margin-bottom: 4rem;
-}
+
 
 /* Bigger than 550 */
 @media (min-width: 550px) {
   .section {
     padding: 12rem 0 11rem;
   }
-  .hero {
-    padding-bottom: 12rem;
-    text-align: left;
-    height: 165px;
-  }
   .clients {
       padding: 8rem 0 7rem;
-  }
-  .phone + .phone {
-    top: -6rem;
-    display: block;
-    max-width: 73.8%;
-    right: 0;
-    z-index: 2;
-    max-height: 338px;
-  }
-  .hero-heading {
-    font-size: 2.4rem;
   }
 }
 
@@ -448,7 +412,7 @@
   }
 
   .clients {
-    padding: 14rem 0;
+    padding: 12rem 0;
   }
 
   .hero-heading {
@@ -491,7 +455,7 @@
 
 
 #homeContent {
-    background-image: url("/images/fridge.jpg");
+    background-image: url("/images/makoDoor.jpg");
     background-repeat: no-repeat;
 
     background-size: cover;
@@ -506,6 +470,15 @@
 
 
 
+}
+
+#sbpImage {
+#    -webkit-clip-path:
+#    -ms-clip-path: polygon(0px 77px,91px 202px,216px 180px,270px 42px,230px 0px,51px 0px);
+#    clip-path: polygon(0px 77px,91px 202px,216px 180px,270px 42px,230px 0px,51px 0px);
+
+
+   -webkit-clip-path: inset(25% 25% 25% 25%);
 }
 </style>
   <style>/*
@@ -946,13 +919,24 @@ there.
   <div class="section clients" id="clientContent">
     <div class="container">
       <div class="row">
-        <h4>Clients</h4>
+        <h2 class="clients-heading">Some of our Clients</h2>
       </div>
       <div class="row">
-
+        <a href="http://azuqua.com"><img class="u-max-full-width" src="/images/azuqua-logo.svg"></a>
       </div>
+      <div class="row">
+        <h5 class="home-heading">"Azuqua enables you to create high value business processes spanning multiple cloud services in minutes without writing any code." MakoWare developed a mobile application to extend the features of their web application to the native Android environment.</h5>
+      </div>
+      <div class="row">
+        <a href="http://seattleboulderingproject.com"><img class="u-max-full-width" src="images/sbp_logo.svg" id="sbpImage"></a>
+      </div>
+      <div class="row">
+        <h5 class="home-heading">"The Seattle Bouldering Project offers a range of climbing classes to introduce you to the sport and give you the tools to train, progress, and have fun." MakoWare created an AngularJS web app to allow the SBP to track their boulder route setting processes.</h5>
+      </div>
+
     </div>
   </div>
+
 
 
 
