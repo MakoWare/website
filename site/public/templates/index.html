@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MakoWare</title>
+
+    <link href="http://fonts.googleapis.com/css?family=Orbitron:500" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/skeleton.css">
+    <link rel="stylesheet" href="/css/main.css">
+
+    <script src="https://google.github.io/traceur-compiler/bin/traceur.js"></script>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script>
+      if ('registerElement' in document
+      && 'createShadowRoot' in HTMLElement.prototype
+      && 'import' in document.createElement('link')
+      && 'content' in document.createElement('template')) {
+      // We're using a browser with native WC support!
+      } else {
+      document.write('<script src="https:\/\/cdnjs.cloudflare.com/ajax/libs/polymer/0.3.4/platform.js"><\/script>')
+          }
+      </script>
+
+      <link rel="import" href="bower_components/app-router/app-router.html">
+      <link rel="import" href="components/mako-router/dist/mako-router.html">
+      <link rel="import" href="components/mako-nav/dist/mako-nav.html">
+
+
+  </head>
+  <body>
+
+    <mako-nav></mako-nav>
+
+    <mako-router>
+      <mako-route path="/" import="/components/home-page/dist/home-page.html"></mako-route>
+      <mako-route path="/about" import="/components/about-page/dist/about-page.html"></mako-route>
+      <mako-route path="/contact" import="/components/contact-page/dist/contact-page.html"></mako-route>
+      <mako-route path="/projects" import="/components/projects-page/dist/projects-page.html"></mako-route>
+      <mako-route path="*" import="/components/no-page/dist/no-page.html"></mako-route>
+
+    </mako-router>
+
+    <!--
+    <app-router mode="auto">
+      <app-route path="/"  import="/components/home-page/dist/home-page.html"></app-route>
+      <app-route path="/about" import="/components/about-page/dist/about-page.html"></app-route>
+      <app-route path="/contact" import="/components/contact-page/dist/contact-page.html"></app-route>
+      <app-route path="/projects" import="/components/projects-page/dist/projects-page.html"></app-route>
+      <app-route path="*" import="/components/no-page/dist/no-page.html"></app-route>
+    </app-router>
+    -->
+
+  </body>
+</html>
