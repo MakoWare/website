@@ -1,7 +1,17 @@
 {
     "name": "website",
     "dir": "~/Repos/website",
-    "commands": [
-	"git pull --rebase"
+    "port": "80",
+    "branches": [
+	"master": {
+	    "commands": [
+		"git pull --rebase"
+	    ]
+	},
+	"staging": {
+	    "commands": [
+		"git pull --rebase"
+	    ]
+	}
     ]
 }
