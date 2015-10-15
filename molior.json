@@ -3,15 +3,19 @@
     "dir": "~/Repos/website",
     "port": "80",
     "branches": [
-	"master": {
-	    "commands": [
-		"git pull --rebase"
-	    ]
+	{
+	    "master": {
+		"commands": [
+		    "git pull --rebase"
+		]
+	    }
 	},
-	"staging": {
-	    "commands": [
-		"git pull --rebase"
-	    ]
+	{
+	    "staging": {
+		"commands": [
+		    "git pull --rebase"
+		]
+	    }
 	}
     ]
 }
