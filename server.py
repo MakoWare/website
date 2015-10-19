@@ -15,5 +15,10 @@ def send_all(path):
 
 if __name__ == '__main__':
     app.debug = False
+    logger = logging.getLogger('werkzeug')
+    handler = logging.FileHandler('access.log')
+    logger.addHandler(handler)
+    
+    app.logger.addHandler(handler)
     app.run(host='0.0.0.0', port=80)
 
